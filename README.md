@@ -220,6 +220,64 @@ You can build the CSS and copy it into your project.
 
 > Dappspec is not ready for production use.
 
+## Vendor CSS Mixin
+
+```
+/vendor/sourcecode-mixin.css
+```
+
+#### how to make a paragraph
+
+  <para>
+    your text goes here! It isn't whitespace sensitive.
+  </para>
+
+  <para>
+    Feel free to break up your sentences in to
+
+    as many lines
+    as
+    you
+    like.
+  </para>
+how about a bit of code
+  <literal>printf()</literal>
+and it works in titles and paras and what-not
+
+  <title>Printing With <literal>printf()</literal></title>
+
+  <para>
+    to print some stuff to the screen, use <literal>printf()</literal>.
+  </para>
+  
+#### how to show console output
+
+```console
+  <screen>
+    $ git clone https://github.com/$USR/$REPO.git
+  </screen>
+```
+  
+```diff
+  <screen>
+!    <prompt>$ <prompt>git clone https://github.com/$USR/$REPO.git
+  </screen>
+```
+
+```console
+shell:~ $ git clone https://github.com/$USR/$REPO.git
+```
+
+then you can add some display code to prevent the $ from being copied:
+
+```css
+  .prompt {
+    user-select: none;
+    -moz-user-select: none;
+}
+```
+
+
 ## Notes
 
 [^1]: Semantic formats like Markdown, DITA, AsciiDoc, reStructuredText, etc, are forward compatible with Dappspec.
