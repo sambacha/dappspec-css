@@ -1,0 +1,32 @@
+{
+  "name": "dappspec",
+  "version": "0.0.1",
+  "directories": {
+    "test": "test",
+    "dappspec": "dappspec"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sambacha/dappspec-css.git"
+  },
+  "keywords": [],
+  "author": "SEE CONTRIBUTORS",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/sambacha/dappspec-css/issues"
+  },
+  "homepage": "https://github.com/sambacha/dappspec-css#readme",
+  "dependencies": {
+    "sass": "^1.54.5"
+  },
+  "devDependencies": {
+    "browserslist": "^4.21.3",
+    "cssnano": "^5.1.13",
+    "postcss": "^8.4.16",
+    "postcss-preset-env": "^7.8.0",
+    "postcss-scss": "^4.0.4",
+    "prettier": "^2.7.1",
+    "stylelint": "^14.10.0"
+  }
+}
