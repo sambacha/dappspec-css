@@ -1,0 +1,78 @@
+/* SPDX-License-Identifier: MIT */
+
+
+/// ---------------------------------------------------------------------------
+/// = Accessible Color Utilities
+/// ---------------------------------------------------------------------------
+
+
+@use 'sass:color'
+@use 'sass:map'
+@use 'sass:math'
+
+
+/// ---------------------------------------------------------------------------
+/// == luminance()
+
+//    Calculates the relative luminance of a color, according to the W3C Web
+//    Content Accessibility Guidelines. Returns a number between 0 and 1.
+
+//    https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+/// ---------------------------------------------------------------------------
+
+@function luminance($color)
+  $cols: ('r': color.red($color), 'g': color.green($color), 'b': color.blue($color))
+  $lums: ('r': 0, 'g': 0, 'b': 0)
+  @each $key, $val in $cols
+    $lum: math.pow(math.div(math.div($val, 255) + 0.055, 1.055), 2.4)
+    $lums: map.set($lums, $key, $lum)
+  @return (0.2126 * map.get($lums, "r")) + (0.7152 * map.get($lums, "g")) + (0.0722 * map.get($lums, "b"))
+
+
+/// ---------------------------------------------------------------------------
+/// == contrast()
+
+//    Calculates the contrast ratio of two colors, according to the W3C Web
+//    Content Accessibility Guidelines. Returns a number between 1 and 21.
+//    Normal text should have a contrast ratio of at least 7 against the
+//    background.
+    
+//    https://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef  
+/// ---------------------------------------------------------------------------
+
+@function contrast($color1, $color2)
+  $lum1: luminance($color1)
+  $lum2: luminance($color2)
+  @if $lum1 < $lum2
+    @return math.div(luminance($color2) + 0.05, luminance($color1) + 0.05)
+  @else
+    @return math.div(luminance($color1) + 0.05, luminance($color2) + 0.05)
+
+
+/// ---------------------------------------------------------------------------
+/// == create-contrast()
+
+///  Attemps to create a color similar to a starting color, but with enough
+///   contrast against a background color. This function will move the HSL
+///   lightness of $code($color) away from $code($bg) in steps until the
+///   contrast ratio between the new color and $code($bg) is at least
+///   $code($target). It does not adjust the hue or saturation.
+
+/// It's possible to pass arguments for which this algorithm can't create
+///   a sufficiently contrasting color. This function will give up after a
+///   maximum number of adjustments and just return whatever it's calculated
+///   so far. It will issue a warning when this happens.
+/// ---------------------------------------------------------------------------
+
+@function create-contrast($color, $bg, $target: 7)
+  $retval: $color
+  $contrast: contrast($retval, $bg)
+  $iters: 1
+  $maxiters: 30
+  @while $contrast < $target and $iters < $maxiters
+    $iters: $iters + 1
+    $retval: color.adjust($retval, $lightness: math.div(color.lightness($color) - color.lightness($bg), 10))
+    $contrast: contrast($retval, $bg)
+    @if $contrast < $target and $iters == $maxiters
+      @warn "Could not create contrasting color for #{$color} on #{$bg} with target #{$target}. Using #{$retval} with contrast #{$contrast}."
+  @return $retval

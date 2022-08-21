@@ -1,0 +1,162 @@
+<html>
+<head>
+<title>Dappspec Test</title>
+<link rel="stylesheet" href="dappspec.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+div.table { padding: 10px; }
+td {
+  padding: 10px;
+  color: var(--color-day-text);
+  background: var(--color-day-background);
+}
+tr.red    td { border: solid 2px var(--color-day-red); }
+tr.orange td { border: solid 2px var(--color-day-orange); }
+tr.yellow td { border: solid 2px var(--color-day-yellow); }
+tr.green  td { border: solid 2px var(--color-day-green); }
+tr.blue   td { border: solid 2px var(--color-day-blue); }
+tr.purple td { border: solid 2px var(--color-day-purple); }
+tr.gray   td { border: solid 2px var(--color-day-gray); }
+
+tr.red    td.fg { color: var(--color-day-red-text); }
+tr.orange td.fg { color: var(--color-day-orange-text); }
+tr.yellow td.fg { color: var(--color-day-yellow-text); }
+tr.green  td.fg { color: var(--color-day-green-text); }
+tr.blue   td.fg { color: var(--color-day-blue-text); }
+tr.purple td.fg { color: var(--color-day-purple-text); }
+tr.gray   td.fg { color: var(--color-day-gray-text); }
+
+tr.red    td.bg { background: var(--color-day-red-background); }
+tr.orange td.bg { background: var(--color-day-orange-background); }
+tr.yellow td.bg { background: var(--color-day-yellow-background); }
+tr.green  td.bg { background: var(--color-day-green-background); }
+tr.blue   td.bg { background: var(--color-day-blue-background); }
+tr.purple td.bg { background: var(--color-day-purple-background); }
+tr.gray   td.bg { background: var(--color-day-gray-background); }
+tr.grayer td.bg {
+  background: var(--color-day-grayer-background);
+  border: solid 2px var(--color-day-gray);
+}
+
+.night {
+  background: var(--color-night-background);
+  color: var(--color-night-text);
+}
+/* FIXME: I don't know why the parent color overrides the .night color */
+.night td {
+  color: var(--color-night-text);
+  background:  var(--color-night-background);
+}
+
+.night tr.red    td { border: solid 2px var(--color-night-red); }
+.night tr.orange td { border: solid 2px var(--color-night-orange); }
+.night tr.yellow td { border: solid 2px var(--color-night-yellow); }
+.night tr.green  td { border: solid 2px var(--color-night-green); }
+.night tr.blue   td { border: solid 2px var(--color-night-blue); }
+.night tr.purple td { border: solid 2px var(--color-night-purple); }
+.night tr.gray   td { border: solid 2px var(--color-night-gray); }
+
+.night tr.red    td.fg { color: var(--color-night-red-text); }
+.night tr.orange td.fg { color: var(--color-night-orange-text); }
+.night tr.yellow td.fg { color: var(--color-night-yellow-text); }
+.night tr.green  td.fg { color: var(--color-night-green-text); }
+.night tr.blue   td.fg { color: var(--color-night-blue-text); }
+.night tr.purple td.fg { color: var(--color-night-purple-text); }
+.night tr.gray   td.fg { color: var(--color-night-gray-text); }
+
+.night tr.red    td.bg { background: var(--color-night-red-background); }
+.night tr.orange td.bg { background: var(--color-night-orange-background); }
+.night tr.yellow td.bg { background: var(--color-night-yellow-background); }
+.night tr.green  td.bg { background: var(--color-night-green-background); }
+.night tr.blue   td.bg { background: var(--color-night-blue-background); }
+.night tr.purple td.bg { background: var(--color-night-purple-background); }
+.night tr.gray   td.bg { background: var(--color-night-gray-background); }
+.night tr.grayer td.bg {
+  background: var(--color-night-grayer-background);
+  border: solid 2px var(--color-night-gray);
+}
+</style>
+</head>
+<body>
+<div class="container">
+<article>
+<h1>Colors</h1>
+
+<div class="table">
+<table>
+<tr class="red">
+<td class="fg">red</td>
+<td class="bg">red</td>
+</tr>
+<tr class="orange">
+<td class="fg">orange</td>
+<td class="bg">orange</td>
+</tr>
+<tr class="yellow">
+<td class="fg">yellow</td>
+<td class="bg">yellow</td>
+</tr>
+<tr class="green">
+<td class="fg">green</td>
+<td class="bg">green</td>
+</tr>
+<tr class="blue">
+<td class="fg">blue</td>
+<td class="bg">blue</td>
+</tr>
+<tr class="purple">
+<td class="fg">purple</td>
+<td class="bg">purple</td>
+</tr>
+<tr class="gray">
+<td class="fg">gray</td>
+<td class="bg">gray</td>
+</tr>
+<tr class="grayer">
+<td></td>
+<td class="bg">grayer</td>
+</tr>
+</table>
+</div>
+
+<div class="table night">
+<table>
+<tr class="red">
+<td class="fg">red</td>
+<td class="bg">red</td>
+</tr>
+<tr class="orange">
+<td class="fg">orange</td>
+<td class="bg">orange</td>
+</tr>
+<tr class="yellow">
+<td class="fg">yellow</td>
+<td class="bg">yellow</td>
+</tr>
+<tr class="green">
+<td class="fg">green</td>
+<td class="bg">green</td>
+</tr>
+<tr class="blue">
+<td class="fg">blue</td>
+<td class="bg">blue</td>
+</tr>
+<tr class="purple">
+<td class="fg">purple</td>
+<td class="bg">purple</td>
+</tr>
+<tr class="gray">
+<td class="fg">gray</td>
+<td class="bg">gray</td>
+</tr>
+<tr class="grayer">
+<td></td>
+<td class="bg">grayer</td>
+</tr>
+</table>
+</div>
+
+</article>
+</div>
+</body>
+</html>

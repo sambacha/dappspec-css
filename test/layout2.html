@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Dappspec Test</title>
+<link rel="stylesheet" href="dappspec.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.top, .bottom {
+  background-color: var(--color-blue-background);
+}
+.layout > aside {
+  background-color: var(--color-green-background);
+}
+.up, .down {
+  background-color: var(--color-yellow-background);
+}
+main {
+  background-color: var(--color-gray-background);
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <header class="top"><code>header.top</code></header>
+  <footer class="bottom"><code>footer.bottom</code></footer>
+  <aside class="left"><code>aside.left</code> lorem ipsum dolor sit amet</aside>
+  <aside class="right"><code>aside.right</code> lorem ipsum dolor sit amet</aside>
+  <nav class="up">nav.up</nav>
+  <main>
+    <p>main</p>
+    <div class="container" style="background: pink">
+      <p>
+        This tests the <code>.container</code> class inside the <code>.layout</code> class.
+        The <code>main</code> box should fill all available space.
+        This paragraph should have a maximum width and be horizontally centered.
+        This is filler text to make sure we line wrap.
+      </p>
+    </div>
+  </main>
+  <div class="down"><code>div.down</code></div>
+</div>
+</body>
+</html>

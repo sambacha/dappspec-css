@@ -1,0 +1,166 @@
+/* SPDX-License-Identifier: MIT */
+
+/* @fileName Blocks  */
+/* @version 0.0.1    */
+/* @package Dappspec */
+
+@use 'sass:map'
+@use 'sass:math'
+@use 'sass:meta'
+
+@use 'core'
+@use 'colors'
+@use 'common'
+@use 'icons'
+@use 'sizes'
+@use 'theme'
+
+
+/// ---------------------------------------------------------------------------
+/// ---
+
+div.example
+  @include common.box
+  @if common.unthemed('block-example')
+    border-inline-start-style: solid
+    border-width: 4px
+    @include colors.border('grayer-background')
+    padding-inline-start: sizes.$padding
+    @include core.contained
+      @media only screen and (max-width: sizes.$tablet)
+        margin-left: - sizes.$padding
+        margin-right: - sizes.$padding
+        padding-inline-start: (sizes.$padding - 4px)
+
+
+/// ---------------------------------------------------------------------------
+/// == Notes
+       [#note]
+
+    [synopsis]
+      [code]
+        <div class="note">
+        <div class="note-advanced">
+        <div class="note-bug">
+        <div class="note-caution">
+        <div class="note-danger">
+        <div class="note-important">
+        <div class="note-package">
+        <div class="note-plain">
+        <div class="note-sidebar">
+        <div class="note-tip">
+        <div class="note-warning">
+
+    Dappspec provides CSS definitions for various types of notes, or admmonitions.
+    These are generally styled as a box with a background color and an icon.
+    The icons are embedded into the CSS as data URIs.
+
+    To use a note, use the corresponding note class on any $code(div) element.
+    A note div should contain other block-level content.
+/// ---
+
+@each $note in advanced bug caution danger important note package plain sidebar tip warning
+  $cls: 'note'
+  @if $note != 'note'
+    $cls: $cls + '-' + $note
+  $icon: ''
+  @if $note != 'plain' and $note != 'sidebar'
+    $icon: 'note-' + $note
+  div.#{$cls}
+    @include common.box
+    @if common.unthemed('block-note')
+      border: solid 1px
+      border-radius: 2px
+      @include colors.border('gray')
+      @include colors.background('gray-background')
+      padding: sizes.$padding
+      @if $icon != ''
+        @if $note == 'caution'
+          @include icons.background-image('note-warning', 'orange')
+        @else if $note == 'danger'
+          @include icons.background-image('note-warning', 'red')
+        @else if $note == 'important'
+          @include icons.background-image('note-important', 'blue')
+        @else
+          @include icons.background-image($icon)
+        background-position-y: 10px
+        padding-left: (2 * sizes.$padding + 24)
+        background-position-x: left 10px
+        [dir=rtl] &, &[dir=rtl]
+          padding-left: sizes.$padding
+          padding-right: (2 * sizes.$padding + 24)
+          background-position-x: right 10px
+        [dir=ltr] &, &[dir=ltr]
+          padding-left: (2 * sizes.$padding + 24)
+          padding-right: sizes.$padding
+          background-position-x: left 10px
+      @if $note == 'sidebar'
+        float: right
+        max-width: 33%
+        margin-inline-start: sizes.$gutter
+        [dir=rtl] &, &[dir=rtl]
+          float: left
+        [dir=ltr] &, &[dir=ltr]
+          float: right
+      @if $note != 'sidebar'
+        @include core.contained
+          @media only screen and (max-width: sizes.$tablet)
+            margin-left: - sizes.$padding
+            margin-right: - sizes.$padding
+            border-left: none
+            border-right: none
+
+
+/// ---------------------------------------------------------------------------
+/// ---
+
+div.screen
+  @include common.box
+  @if common.unthemed('block-screen')
+    @include colors.background('gray-background')
+    border: solid 1px
+    @include colors.border('gray')
+    > pre
+      padding: sizes.$padding
+
+pre.screen
+  @include common.block
+  @if common.unthemed('block-screen')
+    @include colors.background('gray-background')
+    border: solid 1px
+    @include colors.border('gray')
+    padding: sizes.$padding
+
+
+/// ---------------------------------------------------------------------------
+/// == Synopsis or Abstract
+       [#synopsis]
+
+    [synopsis]
+      [code]
+        <div class="synopsis">
+
+/// Dappspec provides CSS definitions for a synopsis, which is often used at the
+/// top of a topic to provide a quick overview. A synopsis often contains a
+/// short paragraph, a bullet list, or a code block.
+
+/// To use a synopsis, use the $code(synopsis) class on any $code(div)
+/// element. A sysnopsis div should contain other block-level content.
+/// ---
+
+div.synopsis
+  @include common.box
+  @if common.unthemed('block-synopsis')
+    border-top: solid 1px
+    border-bottom: solid 1px
+    @include colors.border(blue)
+    @include colors.background(gray-background)
+    padding: sizes.$gutter
+
+/// ---------------------------------------------------------------------------
+/// ---
+
+div.title
+  @include common.block(sizes.$padding)
+  font-weight: bold
+  @include colors.text(gray-text)

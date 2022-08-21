@@ -1,0 +1,308 @@
+/* SPDX-License-Identifier: MIT */
+
+
+/// ---------------------------------------------------------------------------
+/// = Core
+
+    Dappspec provides some core classes to create page layouts for documentation.
+    It also provides default CSS values for certain elements.
+/// ---------------------------------------------------------------------------
+
+@use 'sass:math'
+
+@use 'colors'
+@use 'common'
+@use 'sizes'
+
+
+/// ---------------------------------------------------------------------------
+/// == FIXME
+
+    FIXME: write docs on css defaults
+/// ---------------------------------------------------------------------------
+
+
+html, body
+  font-family: "Cantarell", -apple-system, BlinkMacSystemFont, "Helvetica", sans-serif
+  font-size: 16px
+  box-sizing: border-box
+  @media only screen and (min-width: sizes.$tablet)
+    font-size: 18px
+*, *:before, *:after
+  box-sizing: inherit
+body
+  margin: 0
+  padding: 0
+  @include colors.background(background)
+  @include colors.text(text)
+header, footer, main, aside, nav, article, section, hgroup
+  display: block
+  margin: 0
+  padding: 0
+
+p
+  @include common.block
+
+ul, ol
+  @include common.block
+
+pre
+  @include common.block
+  @include common.mono
+  overflow: auto
+
+a
+  @include colors.text(blue-text)
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+
+/// ---------------------------------------------------------------------------
+/// == Page layout
+       [#layout]
+
+    Dappspec provides the $code(.layout) class to manage page layouts. This uses
+    CSS grids with seven distinct areas that look like this:
+
+    [code]
+      |--------------------------------------|
+      |          header or .top              |
+      |--------------------------------------|
+      | .left  |--------------------| .right |
+      |        |       .up          |        |
+      |        |--------------------|        |
+      |        |       main         |        |
+      |        |                    |        |
+      |        |                    |        |
+      |        |--------------------|        |
+      |        |       .down        |        |
+      |        |--------------------|        |
+      |--------------------------------------|
+      |          footer or .bottom           |
+      |--------------------------------------|
+
+    It does not matter what order you place the elements in, and you do not
+    have to use all the possible child elements. Layouts will place their
+    children in the appropriate places based on element names and classes.
+
+    Use a $code(header) child or any element with the $code(.top) class to
+    place a header at the top of the page, outside any sidebars. Use a
+    $code(footer) child or any element with the $code(.bottom) class to
+    place a footer at the bottom of the page, outside any sidebars. These
+    two classes are mostly used for headers and footers that are present
+    throughout an entire site. They will fill available horizontal space,
+    but they do not expand vertically past their content size.
+
+    Use an $code(aside) element or any element with the $code(.left) class
+    to create a left sidebar. Use any element with the $code(.right) class
+    (preferably an $code(aside) element) to create a right sidebar. These
+    will fill available vertical space, but they do not expand horizontally.
+    In fact, they will use as little space as possible, potentially wrapping
+    text to a single word. This is probably not what you want. They work this
+    way by default to give you more flexibility. For information on sidebars
+    that do the work for you, see $link[>#sidebar] below.
+
+    FIXME: .up and .down
+
+    FIXME: main
+
+
+    --- FIXME below
+
+    article
+    + div.hgroup.container
+        h1
+    + div.region
+        div.contents.container
+          paragraphs and stuff
+        section
+          div.inner
+            div.hgroup.container
+              h2
+            div.region
+              div.contents.container
+                paragraphs and stuff
+              section...
+    + div.clear
+
+
+/// ---
+
+.layout
+  min-width: 100%
+  min-height: 100vh
+  display: grid
+  grid-template-rows: min-content min-content 1fr min-content min-content
+  grid-template-columns: min-content 1fr min-content
+  grid-template-areas: "top top top" "left up right" "left main right" "left down right" "bottom bottom bottom"
+  & > header, & > .top
+    grid-area: top
+  & > footer, & > .bottom
+    grid-area: bottom
+  & > .left, & > aside
+    grid-area: left
+  & > .right
+    grid-area: right
+  & > .up, & > header.up
+    grid-area: up
+  & > .down, & > footer.down
+    grid-area: down
+  & > main, & > .main
+    grid-area: main
+
+
+// FIXME docs container
+
+@mixin container($name, $size)
+  .#{$name}
+    max-width: $size
+    margin-left: auto
+    margin-right: auto
+    padding-left: sizes.$padding
+    padding-right: sizes.$padding
+@include container(container, sizes.$container)
+@include container(container-large, sizes.$container-large)
+@include container(container-medium, sizes.$container-medium)
+@include container(container-small, sizes.$container-small)
+@mixin contained
+  .container &, .container-large &, .container-medium &, .container-small &
+    @content
+
+
+// FIXME docs sidebar
+
+aside.sidebar
+  display: none
+  @media only screen and (min-width: sizes.$tablet)
+    display: block
+    width: sizes.$sidebar
+    padding: sizes.$gutter math.div(sizes.$gutter, 2)
+    @include colors.background(gray-background)
+    section
+      margin-top: 0
+    *
+      margin-bottom: sizes.$gutter
+    div.hgroup
+      border-bottom: none
+    section h2
+      // FIXME em
+      font-size: 1em
+      margin-bottom: 0
+
+
+// FIXME docs article section heading
+
+article
+  @include common.box
+  padding-top: math.div(sizes.$gutter, 2)
+  padding-bottom: math.div(sizes.$gutter, 2)
+  // FIXME em
+  min-height: 20em
+  @include colors.background(background)
+  @include colors.text(text)
+section
+  // FIXME em
+  margin-top: 2.4em
+  clear: both
+  section
+    // FIXME em
+    margin-top: 1.44em
+
+
+/// == Headings
+
+    [synopsis]
+      [code]
+        <h1> ... <h6>
+        <div class="hgroup"><h1> ... <h6>
+        <h1 class="subtitle"> ... <h6 class="subtitle">
+
+//    FIXME: use h1 thru h6 for title of article or section. you can also put
+//    them inside div.hgroup, but you don't have to. To do subtitle, use the
+//    next lowest with class="subtitle", and do use div.hgroup
+
+h1
+  font-weight: 300
+  font-size: 24pt
+h2
+  font-weight: 800
+  font-size: 17pt
+h3
+  font-weight: 800
+  font-size: 15pt
+h4
+  font-weight: 700
+  font-size: 14pt
+h5
+  font-weight: 700
+  font-size: 12pt
+h2, h3, h4, h5
+  opacity: 0.7
+
+div.hgroup
+  // FIXME em
+  margin-bottom: 0.5em
+  @include colors.text(gray-text)
+section > div.inner > div.hgroup
+  margin-top: 0
+  border-bottom: solid 1px
+  @include colors.border(gray)
+
+
+/// ---------------------------------------------------------------------------
+div.trails
+  margin: 0 - math.div(sizes.$gutter, 2)
+  // FIXME em
+  padding: 0.2em math.div(sizes.$gutter, 2)
+  @include colors.background(gray-background)
+  div.trail
+    // FIXME em
+    margin: 0.2em 0
+    padding: 0 1em 0 1em
+    text-indent: -1em
+    @include colors.text(gray-text)
+    a.trail
+      white-space: nowrap
+
+
+/// ---------------------------------------------------------------------------
+/// == Grids
+       [#grid]
+
+    [synopsis]
+      [code]
+        <div class="grid">
+        <div class="grid-4-3-2">
+        <div class="grid-3-2-1">
+        <div class="grid-2-2-1">
+        ...
+
+    The various grid classes allow you to make a grid of items that reflow
+    horizontally using CSS grids. These grids are designed to adjust to
+    different screen sizes.
+
+    The basic $code(.grid) class uses four columns on desktop, three columns
+    on tablets, and two columns on mobile. You can also specify exactly how
+    many columns at each size by using a specific class of the form
+    $code(.grid-$code(d)-$code(t)-$code(m)), where $code(d), $code(t), and
+    $code(m) are the number of columns on desktop, tablet, and mobile.
+/// ---
+
+@mixin grid($cd, $ct, $cm, $name: grid-#{$cd}-#{$ct}-#{$cm})
+  .#{$name}
+    display: grid
+    column-gap: sizes.$gutter
+    row-gap: sizes.$gutter
+    grid-template-columns: repeat($cm, 1fr)
+    @media (min-width: sizes.$tablet)
+      grid-template-columns: repeat($ct, 1fr)
+    @media (min-width: sizes.$desktop)
+      grid-template-columns: repeat($cd, 1fr)
+@include grid(4, 3, 2, grid)
+@each $cd in 4 3 2
+  @each $ct in 4 3 2 1
+    @if $ct <= $cd
+      @each $cm in 4 3 2 1
+        @if $cm <= $ct
+          @include grid($cd, $ct, $cm)

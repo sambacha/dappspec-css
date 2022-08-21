@@ -1,0 +1,43 @@
+/* SPDX-License-Identifier: MIT */
+
+@use 'sass:map'
+@use 'sass:string'
+
+@use 'colors'
+
+@use 'icons__data'
+
+$icons: ('note-advanced': icons__data.$note-advanced, 'note-bug': icons__data.$note-bug, 'note-important': icons__data.$note-important, 'note-note': icons__data.$note-note, 'note-package': icons__data.$note-package, 'note-tip': icons__data.$note-tip, 'note-warning': icons__data.$note-warning)
+
+@function _substitute($string, $fill: '', $stroke: '')
+  $index: string.index($string, '%')
+  @if $fill == ''
+    $fill: 'gray-text'
+  @if $stroke == ''
+    $stroke: 'text'
+  @if $index
+    $pre: string.slice($string, 1, $index - 1)
+    @if string.slice($string, $index, $index + 10) == '%DAPPSPEC_FILL%'
+      $color: '%23' + string.slice('' + map.get(colors.$default-colors, $fill), 2, -1)
+      @return $pre + $color + _substitute(string.slice($string, $index + 11), $fill, $stroke)
+    @if string.slice($string, $index, $index + 12) == '%DAPPSPEC_STROKE%'
+      $color: '%23' + string.slice('' + map.get(colors.$default-colors, $stroke), 2, -1)
+      @return $pre + $color + _substitute(string.slice($string, $index + 13), $fill, $stroke)
+    @return $pre + '%' + _substitute(string.slice($string, $index + 1), $fill, $stroke)
+  @return $string
+
+// FIXME global list of colors, then check against for background-image
+// FIXME dark mode, use Radix Primitives color pallete 
+
+:root
+  @each $note in advanced bug important note package tip warning
+    $data: map.get($icons, 'note-' + $note)
+    --icon-note-#{$note}: #{_substitute(url('data:image/svg+xml,' + $data))}
+    @each $color in "red" "orange" "yellow" "green" "blue" "purple"
+      --icon-note-#{$note}-#{$color}: #{_substitute(url('data:image/svg+xml,' + $data), $color)}
+
+@mixin background-image($name, $fill: '', $stroke: '')
+  @if $fill != ''
+    $fill: '-' + $fill
+  background-image: var(--icon-#{$name}#{$fill})
+  background-repeat: no-repeat

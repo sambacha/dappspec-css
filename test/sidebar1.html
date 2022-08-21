@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Dappspec Test</title>
+<link rel="stylesheet" href="dappspec.css">
+<style>
+.top, .bottom {
+  background-color: var(--color-blue-background);
+}
+.up, .down {
+  background-color: var(--color-yellow-background);
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <header class="top"><code>header.top</code></header>
+  <footer class="bottom"><code>footer.bottom</code></footer>
+  <aside class="sidebar left">
+    <p><code>aside.sidebar.left</code></p>
+    <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </aside>
+  <aside class="sidebar right">
+    <p><code>aside.sidebar.right</code></p>
+    <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </aside>
+  <nav class="up">nav.up</nav>
+  <main>
+    <p>main</p>
+    <div class="container">
+    <p>
+      This is a basic test of the <code>.sidebar</code> class.
+      The <code>.sidebar</code> class provides styling and basic functionality
+      for left and right sidebars in the <code>.layout</code> class.
+      By default, they should disappear below tablet size.
+    </p>
+    </div>
+  </main>
+  <div class="down"><code>div.down</code></div>
+</div>
+</body>
+</html>

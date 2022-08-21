@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Dappspec Test</title>
+<link rel="stylesheet" href="dappspec.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.top, .bottom {
+  background-color: var(--color-blue-background);
+}
+.layout > aside {
+  background-color: var(--color-green-background);
+}
+.up, .down {
+  background-color: var(--color-yellow-background);
+}
+main {
+  background-color: var(--color-gray-background);
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <header class="top"><code>header.top</code></header>
+  <footer class="bottom"><code>footer.bottom</code></footer>
+  <aside class="left"><code>aside.left</code> lorem ipsum dolor sit amet</aside>
+  <aside class="right"><code>aside.right</code> lorem ipsum dolor sit amet</aside>
+  <nav class="up">nav.up</nav>
+  <main>
+    <p>main</p>
+    <p>
+      This tests the <code>.layout</code> class.
+      It does not use <code>.sidebar</code>, <code>.container</code>,
+      or any other layout helpers.
+      The <code>main</code> box should fill all available space.
+    </p>
+    <p>There is deliberately no padding in this test.</p>
+  </main>
+  <div class="down"><code>div.down</code></div>
+</div>
+</body>
+</html>

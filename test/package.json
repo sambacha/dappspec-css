@@ -1,0 +1,12 @@
+{
+  "name": "dappspec-css",
+  "version": "0.0.0",
+  "main": "index.js",
+  "directories": {
+    "dappspec": "dappspec",
+    "test": "test"
+  },
+  "dependencies": {
+    "sass": "^1.54.5"
+  }
+}

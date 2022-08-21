@@ -1,0 +1,1064 @@
+/* SPDX-License-Identifier: MIT */
+
+/* @fileName Colors  */
+/* @version 0.0.1    */
+/* @package Dappspec */
+
+/// ---------------------------------------------------------------------------
+/// = Colors
+
+///  Dappspec provides dozens of colors definitions for text, backgrounds, and
+///  borders. It provides these for both a day mode and a night mode. (We
+///  use the terms "day" and "night" instead of "light" and "dark" to avoid
+///  confusion with color names. Does $code(dark-blue) mean a blue that is
+///  dark or a blue for the dark mode?)
+/// ---------------------------------------------------------------------------
+
+@use 'sass:color'
+@use 'sass:map'
+
+@use 'wcag'
+
+/// ---------------------------------------------------------------------------
+/// == Theme colors
+
+///  Select which color scheme to use with the $code(theme-color-scheme) Sass
+///  variable. Dappspec provides all its color in both day and night mode. There
+///  are three recognized values for this variable:
+
+ * $code('auto')
+///  - Use day mode by default, but follow the preference sent by the browser.
+ * $code('day')
+///  - Force day mode, regardless of the preference sent by the browser.
+ * $code('night')
+///  - Force night mode, regardless of the preference sent by the browser.
+/// ---------------------------------------------------------------------------
+
+$theme-color-scheme: 'auto'
+ $theme-color-scheme: 'day'
+ $theme-color-scheme: 'night'
+
+
+/// ---------------------------------------------------------------------------
+/// == Theme colors
+///  You can customize the colors by specifying the variables that start with
+///  the prefix $code(theme-). Only nine colors must be specified: the day mode
+///  text and background colors, and seven accent colors (red, orange, yellow,
+///  green, blue, purple, and gray). The accent colors should be a suitable
+///  lightness for a border, not necessarily for use as a text or background
+///  color. All other colors may be specified explicitly, but they will be
+///  computed automatically if not specified.
+
+///  In addition to these nine core colors, this module provides text colors
+///  for each of the seven accent colors, background colors for each of the
+///  seven accent colors, and an additional gray background color. If these
+///  colors needs to be computed, it uses the $code(wcag.create-contrast)
+///  method to create a color with sufficient contrast against either the
+///  text or background color.
+
+///  This module also provides night mode variants of all of these. By default,
+///  it flips the text and background colors, uses the same accent colors, and
+///  recomputes the night variants of the accent text and background colors
+///  using the same technique.
+
+///  Note that the target contrast we use for each color and variant differs
+///  based on what looked good for the default base colors. They will always
+///  give you colors that are readable, but they might not always give you the
+///  look you want. Remember that you can override all of these computed colors
+///  by manually specifying the theme colors.
+
+ * $code($theme-day-text)
+///  - The default text color for day mode. The default is $code(#000000).
+
+ * $code($theme-day-background)
+///  - The default background color for day mode. The default is $code(#ffffff).
+
+ * $code($theme-day-red)
+///  - The base red color for day mode. The default is $code(#c01c28).
+
+ * $code($theme-day-orange)
+///  - The base orange color for day mode. The default is $code(#ffa348).
+
+ * $code($theme-day-yellow)
+///  - The base yellow color for day mode. The default is $code(#f8e45c).
+
+ * $code($theme-day-green)
+///  - The base green color for day mode. The default is $code(#57e389).
+
+ * $code($theme-day-blue)
+///  - The base blue color for day mode. The default is $code(#3584e4).
+
+ * $code($theme-day-purple)
+///  - The base purple color for day mode. The default is $code(#a347ba).
+
+ * $code($theme-day-gray)
+///  - The base gray color for day mode. The default is $code(#c0bfbc).
+
+ * $code($theme-day-red-text)
+///  - The red text color for day mode. The default is $code(null). If left
+//////  as $code(null), the actual red text color will be computed based on
+//////  the base red color and the background color for day mode.
+
+ * $code($theme-day-orange-text)
+///  - The orange text color for day mode. The default is $code(null). If left
+//////  as $code(null), the actual orange text color will be computed based on
+//////  the base orange color and the background color for day mode.
+
+ * $code($theme-day-yellow-text)
+///  - The yellow text color for day mode. The default is $code(null). If left
+/// /// as $code(null), the actual yellow text color will be computed based on
+/// /// the base yellow color and the background color for day mode.
+
+ * $code($theme-day-green-text)
+///  - The green text color for day mode. The default is $code(null). If left
+/// /// as $code(null), the actual green text color will be computed based on
+/// /// the base green color and the background color for day mode.
+
+ * $code($theme-day-blue-text)
+///  - The blue text color for day mode. The default is $code(null). If left
+/// /// as $code(null), the actual blue text color will be computed based on
+/// /// the base blue color and the background color for day mode.
+
+ * $code($theme-day-purple-text)
+///  - The purple text color for day mode. The default is $code(null). If left
+/// /// as $code(null), the actual purple text color will be computed based on
+/// /// the base purple color and the background color for day mode.
+
+ * $code($theme-day-gray-text)
+///  - The gray text color for day mode. The default is $code(null). If left
+/// /// as $code(null), the actual gray text color will be computed based on
+/// /// the base gray color and the background color for day mode.
+
+ * $code($theme-day-red-background)
+///  - The red background color for day mode. The default is $code(null). If
+/// /// left as $code(null), the actual red background color will be computed
+/// /// based on the base red color and the text color for day mode.
+
+ * $code($theme-day-orange-background)
+///  - The orange background color for day mode. The default is $code(null). If
+/// /// left as $code(null), the actual orange background color will be computed
+/// /// based on the base orange color and the text color for day mode.
+
+ * $code($theme-day-yellow-background)
+///  - The yellow background color for day mode. The default is $code(null). If
+/// /// left as $code(null), the actual yellow background color will be computed
+/// /// based on the base yellow color and the text color for day mode.
+
+ * $code($theme-day-green-background)
+///  - The green background color for day mode. The default is $code(null). If
+/// /// left as $code(null), the actual green background color will be computed
+/// /// based on the base green color and the text color for day mode.
+
+ * $code($theme-day-blue-background)
+///  - The blue background color for day mode. The default is $code(null). If
+/// /// left as $code(null), the actual blue background color will be computed
+/// /// based on the base blue color and the text color for day mode.
+
+ * $code($theme-day-purple-background)
+///  - The purple background color for day mode. The default is $code(null). If
+/// /// left as $code(null), the actual purple background color will be computed
+/// /// based on the base purple color and the text color for day mode.
+
+ * $code($theme-day-gray-background)
+///  - The gray background color for day mode. The default is $code(null). If
+/// /// left as $code(null), the actual gray background color will be computed
+/// /// based on the base gray color and the text color for day mode.
+
+ * $code($theme-day-grayer-background)
+///  - A darker gray background color for day mode. The default is $code(null).
+/// /// If left as $code(null), the actual grayer background color will be computed
+/// /// based on the base gray color and the text color for day mode.
+
+ * $code($theme-night-text) null
+///  - The default text color for night mode. The default is $code(null). If
+/// /// left as $code(null), the actual night text color will be the background
+/// /// color for day mode.
+
+ * $code($theme-night-background)
+///  - The default background color for night mode. The default is $code(#2d2d2d)
+/// /// to mimic the dark gray background color of Adwaita. If set to $code(null),
+/// /// the actual night background color will be the text color for day mode.
+
+ * $code($theme-night-red)///  null
+///  - The base red color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual base red color for night mode will be the
+/// /// same as the base red color for day mode.
+
+ * $code($theme-night-orange) null
+///  - The base orange color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual base orange color for night mode will be the
+/// /// same as the base orange color for day mode.
+
+ * $code($theme-night-yellow) null
+///  - The base yellow color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual base yellow color for night mode will be the
+/// /// same as the base yellow color for day mode.
+
+ * $code($theme-night-green)  null
+///  - The base green color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual base green color for night mode will be the
+/// /// same as the base green color for day mode.
+
+ * $code($theme-night-blue)/// null
+///  - The base blue color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual base blue color for night mode will be the
+/// /// same as the base blue color for day mode.
+
+ * $code($theme-night-purple) null
+///  - The base purple color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual base purple color for night mode will be the
+/// /// same as the base purple color for day mode.
+
+ * $code($theme-night-gray)/// null
+///  - The base gray color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual base gray color for night mode will be the
+/// /// same as the base gray color for day mode.
+
+ * $code($theme-night-red-text)///  null
+///  - The red text color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual red text color will be computed based on
+/// /// the base red color and the background color for night mode.
+
+ * $code($theme-night-orange-text) null
+///  - The orange text color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual orange text color will be computed based on
+/// /// the base orange color and the background color for night mode.
+
+ * $code($theme-night-yellow-text) null
+///  - The yellow text color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual yellow text color will be computed based on
+/// /// the base yellow color and the background color for night mode.
+
+ * $code($theme-night-green-text)  null
+///  - The green text color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual green text color will be computed based on
+/// /// the base green color and the background color for night mode.
+
+ * $code($theme-night-blue-text)/// null
+///  - The blue text color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual blue text color will be computed based on
+/// /// the base blue color and the background color for night mode.
+
+ * $code($theme-night-purple-text) null
+///  - The purple text color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual purple text color will be computed based on
+/// /// the base purple color and the background color for night mode.
+
+ * $code($theme-night-gray-text)/// null
+///  - The gray text color for night mode. The default is $code(null). If left
+/// /// as $code(null), the actual gray text color will be computed based on
+/// /// the base gray color and the background color for night mode.
+
+ * $code($theme-night-red-background)///  null
+///  - The red background color for night mode. The default is $code(null).
+/// /// If left as $code(null), the actual red background color will be
+/// /// computed based on the base red color and the text color for night
+/// /// mode.
+
+ * $code($theme-night-orange-background) null
+///  - The orange background color for night mode. The default is $code(null).
+/// /// If left as $code(null), the actual orange background color will be
+/// /// computed based on the base orange color and the text color for night
+/// /// mode.
+
+ * $code($theme-night-yellow-background) null
+///  - The yellow background color for night mode. The default is $code(null).
+/// /// If left as $code(null), the actual yellow background color will be
+/// /// computed based on the base yellow color and the text color for night
+/// /// mode.
+
+ * $code($theme-night-green-background)  null
+///  - The green background color for night mode. The default is $code(null).
+/// /// If left as $code(null), the actual green background color will be
+/// /// computed based on the base green color and the text color for night
+/// /// mode.
+
+ * $code($theme-night-blue-background)/// null
+///  - The blue background color for night mode. The default is $code(null).
+/// /// If left as $code(null), the actual blue background color will be
+/// /// computed based on the base blue color and the text color for night
+/// /// mode.
+
+ * $code($theme-night-purple-background) null
+///  - The purple background color for night mode. The default is $code(null).
+/// /// If left as $code(null), the actual purple background color will be
+/// /// computed based on the base purple color and the text color for night
+/// /// mode.
+
+ * $code($theme-night-gray-background)/// null
+///  - The gray background color for night mode. The default is $code(null).
+/// /// If left as $code(null), the actual gray background color will be
+/// /// computed based on the base gray color and the text color for night
+/// /// mode.
+
+ * $code($theme-night-grayer-background) null
+///  - A lighter gray background color for night mode. The default is
+/// /// $code(null). If left as $code(null), the actual grayer background color
+/// /// will be computed based on the base gray color and the text color for
+/// /// night mode.
+
+///  For each of these theme color Sass variables, there is a corresponding
+///  Sass variable with the actual, computed color. These variables use
+///  $code(actual) in place of $code(theme) in the variable name. However,
+///  you should not use these directly unless you need to do further color
+///  computations in Sass. To use colors in CSS, use either the CSS color
+///  variables or the set of color mixins that Dappspec provides, both described
+///  below.
+/// ---------------------------------------------------------------------------
+
+$theme-day-text:#000000
+$theme-day-background: #ffffff
+
+$theme-day-red: #c01c28
+$theme-day-orange: #ffa348
+$theme-day-yellow: #f8e45c
+$theme-day-green:  #57e389
+$theme-day-blue:/// #3584e4
+$theme-day-purple: #a347ba
+$theme-day-gray:/// #c0bfbc
+
+$theme-day-red-text:///  null
+$theme-day-orange-text: null
+$theme-day-yellow-text: null
+$theme-day-green-text:  null
+$theme-day-blue-text:/// null
+$theme-day-purple-text: null
+$theme-day-gray-text:/// null
+
+$theme-day-red-background:///  null
+$theme-day-orange-background: null
+$theme-day-yellow-background: null
+$theme-day-green-background:  null
+$theme-day-blue-background:/// null
+$theme-day-purple-background: null
+$theme-day-gray-background:/// null
+$theme-day-grayer-background: null
+
+// night background lifted from adwaita, but you can null it instead
+$theme-night-text: null
+$theme-night-background: #2d2d2d
+
+$theme-night-red:///  null
+$theme-night-orange: null
+$theme-night-yellow: null
+$theme-night-green:  null
+$theme-night-blue:/// null
+$theme-night-purple: null
+$theme-night-gray:/// null
+
+$theme-night-red-text:///  null
+$theme-night-orange-text: null
+$theme-night-yellow-text: null
+$theme-night-green-text:  null
+$theme-night-blue-text:/// null
+$theme-night-purple-text: null
+$theme-night-gray-text:/// null
+
+$theme-night-red-background:///  null
+$theme-night-orange-background: null
+$theme-night-yellow-background: null
+$theme-night-green-background:  null
+$theme-night-blue-background:/// null
+$theme-night-purple-background: null
+$theme-night-gray-background:/// null
+$theme-night-grayer-background: null
+
+// Actual day base colors
+
+$actual-day-text:/// ///  $theme-day-text
+$actual-day-background: $theme-day-background
+
+$actual-day-red:///  $theme-day-red
+$actual-day-orange: $theme-day-orange
+$actual-day-yellow: $theme-day-yellow
+$actual-day-green:  $theme-day-green
+$actual-day-blue:/ $theme-day-blue
+$actual-day-purple: $theme-day-purple
+$actual-day-gray:/ $theme-day-gray
+
+// Actual day text colors
+
+$actual-day-red-text:///  $theme-day-red-text
+$actual-day-orange-text: $theme-day-orange-text
+$actual-day-yellow-text: $theme-day-yellow-text
+$actual-day-green-text:  $theme-day-green-text
+$actual-day-blue-text:/ $theme-day-blue-text
+$actual-day-purple-text: $theme-day-purple-text
+$actual-day-gray-text:/ $theme-day-gray-text
+
+@if not $theme-day-red-text
+  $actual-day-red-text: wcag.create-contrast($actual-day-red, $actual-day-background) !global
+
+@if not $theme-day-orange-text
+  $actual-day-orange-text: wcag.create-contrast($actual-day-orange, $actual-day-background) !global
+
+@if not $theme-day-yellow-text
+  $actual-day-yellow-text: wcag.create-contrast($actual-day-yellow, $actual-day-background) !global
+
+@if not $theme-day-green-text
+  $actual-day-green-text: wcag.create-contrast($actual-day-green, $actual-day-background) !global
+
+@if not $theme-day-blue-text
+  $actual-day-blue-text: wcag.create-contrast($actual-day-blue, $actual-day-background) !global
+
+@if not $theme-day-purple-text
+  $actual-day-purple-text: wcag.create-contrast($actual-day-purple, $actual-day-background) !global
+
+@if not $theme-day-gray-text
+  $actual-day-gray-text: wcag.create-contrast($actual-day-gray, $actual-day-background) !global
+
+// Actual day background colors
+
+$actual-day-red-background:///  $theme-day-red-background
+$actual-day-orange-background: $theme-day-orange-background
+$actual-day-yellow-background: $theme-day-yellow-background
+$actual-day-green-background:  $theme-day-green-background
+$actual-day-blue-background:/ $theme-day-blue-background
+$actual-day-purple-background: $theme-day-purple-background
+$actual-day-gray-background:/ $theme-day-gray-background
+$actual-day-grayer-background: $theme-day-grayer-background
+
+@if not $theme-day-red-background
+  $actual-day-red-background: wcag.create-contrast($actual-day-red, $actual-day-text, 16) !global
+
+@if not $theme-day-orange-background
+  $actual-day-orange-background: wcag.create-contrast($actual-day-orange, $actual-day-text, 16) !global
+
+@if not $theme-day-yellow-background
+  $actual-day-yellow-background: wcag.create-contrast($actual-day-yellow, $actual-day-text, 18) !global
+
+@if not $theme-day-green-background
+  $actual-day-green-background: wcag.create-contrast($actual-day-green, $actual-day-text, 16) !global
+
+@if not $theme-day-blue-background
+  $actual-day-blue-background: wcag.create-contrast($actual-day-blue, $actual-day-text, 16) !global
+
+@if not $theme-day-purple-background
+  $actual-day-purple-background: wcag.create-contrast($actual-day-purple, $actual-day-text, 16) !global
+
+@if not $theme-day-gray-background
+  $actual-day-gray-background: wcag.create-contrast($actual-day-gray, $actual-day-text, 17) !global
+
+@if not $theme-day-grayer-background
+  $actual-day-grayer-background: wcag.create-contrast($actual-day-gray, $actual-day-text, 15) !global
+
+// Actual night base colors
+
+$actual-night-text:/// ///  $theme-night-text
+$actual-night-background: $theme-night-background
+
+$actual-night-red:///  $theme-night-red
+$actual-night-orange: $theme-night-orange
+$actual-night-yellow: $theme-night-yellow
+$actual-night-green:  $theme-night-green
+$actual-night-blue:/ $theme-night-blue
+$actual-night-purple: $theme-night-purple
+$actual-night-gray:/ $theme-night-gray
+
+@if not $theme-night-text
+  $actual-night-text: color.invert($actual-day-text) !global
+
+@if not $theme-night-background
+  $actual-night-background: color.invert($actual-day-background) !global
+
+@if not $theme-night-red
+  $actual-night-red: $actual-day-red !global
+
+@if not $theme-night-orange
+  $actual-night-orange: $actual-day-orange !global
+
+@if not $theme-night-yellow
+  $actual-night-yellow: $actual-day-yellow !global
+
+@if not $theme-night-green
+  $actual-night-green: $actual-day-green !global
+
+@if not $theme-night-blue
+  $actual-night-blue: $actual-day-blue !global
+
+@if not $theme-night-purple
+  $actual-night-purple: $actual-day-purple !global
+
+@if not $theme-night-gray
+  $actual-night-gray: $actual-day-gray !global
+
+// Actual night text colors
+
+$actual-night-red-text:///  $theme-night-red-text
+$actual-night-orange-text: $theme-night-orange-text
+$actual-night-yellow-text: $theme-night-yellow-text
+$actual-night-green-text:  $theme-night-green-text
+$actual-night-blue-text:/ $theme-night-blue-text
+$actual-night-purple-text: $theme-night-purple-text
+$actual-night-gray-text:/ $theme-night-gray-text
+
+@if not $theme-night-red-text
+  $actual-night-red-text: wcag.create-contrast($actual-night-red, $actual-night-background) !global
+
+@if not $theme-night-orange-text
+  $actual-night-orange-text: wcag.create-contrast($actual-night-orange, $actual-night-background) !global
+
+@if not $theme-night-yellow-text
+  $actual-night-yellow-text: wcag.create-contrast($actual-night-yellow, $actual-night-background) !global
+
+@if not $theme-night-green-text
+  $actual-night-green-text: wcag.create-contrast($actual-night-green, $actual-night-background) !global
+
+@if not $theme-night-blue-text
+  $actual-night-blue-text: wcag.create-contrast($actual-night-blue, $actual-night-background) !global
+
+@if not $theme-night-purple-text
+  $actual-night-purple-text: wcag.create-contrast($actual-night-purple, $actual-night-background) !global
+
+@if not $theme-night-gray-text
+  $actual-night-gray-text: wcag.create-contrast($actual-night-gray, $actual-night-background) !global
+
+// Actual night background colors
+
+$actual-night-red-background:///  $theme-night-red-background
+$actual-night-orange-background: $theme-night-orange-background
+$actual-night-yellow-background: $theme-night-yellow-background
+$actual-night-green-background:  $theme-night-green-background
+$actual-night-blue-background:/ $theme-night-blue-background
+$actual-night-purple-background: $theme-night-purple-background
+$actual-night-gray-background:/ $theme-night-gray-background
+$actual-night-grayer-background: $theme-night-grayer-background
+
+@if not $theme-night-red-background
+  $actual-night-red-background: wcag.create-contrast($actual-night-red, $actual-night-text, 12) !global
+
+@if not $theme-night-orange-background
+  $actual-night-orange-background: wcag.create-contrast($actual-night-orange, $actual-night-text, 10) !global
+
+@if not $theme-night-yellow-background
+  $actual-night-yellow-background: wcag.create-contrast($actual-night-yellow, $actual-night-text, 10) !global
+
+@if not $theme-night-green-background
+  $actual-night-green-background: wcag.create-contrast($actual-night-green, $actual-night-text, 10) !global
+
+@if not $theme-night-blue-background
+  $actual-night-blue-background: wcag.create-contrast($actual-night-blue, $actual-night-text, 12) !global
+
+@if not $theme-night-purple-background
+  $actual-night-purple-background: wcag.create-contrast($actual-night-purple, $actual-night-text, 12) !global
+
+@if not $theme-night-gray-background
+  $actual-night-gray-background: wcag.create-contrast($actual-night-gray, $actual-night-text, 12) !global
+
+@if not $theme-night-grayer-background
+  $actual-night-grayer-background: wcag.create-contrast($actual-night-gray, $actual-night-text, 8) !global
+
+
+
+/// ---------------------------------------------------------------------------
+/// == CSS color variables
+
+///  Dappspec provides a set of CSS color variables for all colors it defines, as
+///  well as a set of Sass variables that reference these CSS color variables.
+///  The CSS color variables are set on the $code(:root) selector. They are
+///  defined to the actual color values that are computed from the theme
+///  color values, as described above.
+
+///  These variables come in three forms: the explicit day and night forms,
+///  and a form that resolves to the default scheme, not the user's preferred
+///  scheme as provided by the browser. If you reference them, you should also
+///  use media queries to match on the preferred color scheme, unless you
+///  explicitly want to override this preference.
+
+///  Dappspec also provides a set of mixins to define text, background, and border
+///  colors. These mixins take care of the media queries for you. They are
+///  described below.
+
+ * $code($text)
+ * $code(var(--color-text))
+///  - The text color in the default color scheme.
+
+ * $code($background)
+ * $code(var(--color-background))
+///  - The background color in the default color scheme.
+
+ * $code($red)
+ * $code(var(--color-red))
+///  - The base red color in the default color scheme.
+
+ * $code($orange)
+ * $code(var(--color-orange))
+///  - The base orange color in the default color scheme.
+
+ * $code($yellow)
+ * $code(var(--color-yellow))
+///  - The base yellow color in the default color scheme.
+
+ * $code($green)
+ * $code(var(--color-green))
+///  - The base green color in the default color scheme.
+
+ * $code($blue)
+ * $code(var(--color-blue))
+///  - The base blue color in the default color scheme.
+
+ * $code($purple)
+ * $code(var(--color-purple))
+///  - The base purple color in the default color scheme.
+
+ * $code($gray)
+ * $code(var(--color-gray))
+///  - The base gray color in the default color scheme.
+
+ * $code($red-text)
+ * $code(var(--color-red-text))
+///  - The red text color in the default color scheme.
+
+ * $code($orange-text)
+ * $code(var(--color-orange-text))
+///  - The orange text color in the default color scheme.
+
+ * $code($yellow-text)
+ * $code(var(--color-yellow-text))
+///  - The yellow text color in the default color scheme.
+
+ * $code($green-text)
+ * $code(var(--color-green-text))
+///  - The green text color in the default color scheme.
+
+ * $code($blue-text)
+ * $code(var(--color-blue-text))
+///  - The blue text color in the default color scheme.
+
+ * $code($purple-text)
+ * $code(var(--color-purple-text))
+///  - The purple text color in the default color scheme.
+
+ * $code($gray-text)
+ * $code(var(--color-gray-text))
+///  - The gray text color in the default color scheme.
+
+ * $code($red-background)
+ * $code(var(--color-red-background))
+///  - The red background color in the default color scheme.
+
+ * $code($orange-background)
+ * $code(var(--color-orange-background))
+///  - The orange background color in the default color scheme.
+
+ * $code($yellow-background)
+ * $code(var(--color-yellow-background))
+///  - The yellow background color in the default color scheme.
+
+ * $code($green-background)
+ * $code(var(--color-green-background))
+///  - The green background color in the default color scheme.
+
+ * $code($blue-background)
+ * $code(var(--color-blue-background))
+///  - The blue background color in the default color scheme.
+
+ * $code($purple-background)
+ * $code(var(--color-purple-background))
+///  - The purple background color in the default color scheme.
+
+ * $code($gray-background)
+ * $code(var(--color-gray-background))
+///  - The gray background color in the default color scheme.
+
+ * $code($grayer-background)
+ * $code(var(--color-grayer-background))
+///  - The grayer background color in the default color scheme.
+
+ * $code($day-text)
+ * $code(var(--color-day-text))
+///  - The text color in the day color scheme.
+
+ * $code($day-background)
+ * $code(var(--color-day-background))
+///  - The background color in the day color scheme.
+
+ * $code($day-red)
+ * $code(var(--color-day-red))
+///  - The base red color in the day color scheme.
+
+ * $code($day-orange)
+ * $code(var(--color-day-orange))
+///  - The base orange color in the day color scheme.
+
+ * $code($day-yellow)
+ * $code(var(--color-day-yellow))
+///  - The base yellow color in the day color scheme.
+
+ * $code($day-green)
+ * $code(var(--color-day-green))
+///  - The base green color in the day color scheme.
+
+ * $code($day-blue)
+ * $code(var(--color-day-blue))
+///  - The base blue color in the day color scheme.
+
+ * $code($day-purple)
+ * $code(var(--color-day-purple))
+///  - The base purple color in the day color scheme.
+
+ * $code($day-gray)
+ * $code(var(--color-day-gray))
+///  - The base gray color in the day color scheme.
+
+ * $code($day-red-text)
+ * $code(var(--color-day-red-text))
+///  - The red text color in the day color scheme.
+
+ * $code($day-orange-text)
+ * $code(var(--color-day-orange-text))
+///  - The orange text color in the day color scheme.
+
+ * $code($day-yellow-text)
+ * $code(var(--color-day-yellow-text))
+///  - The yellow text color in the day color scheme.
+
+ * $code($day-green-text)
+ * $code(var(--color-day-green-text))
+///  - The green text color in the day color scheme.
+
+ * $code($day-blue-text)
+ * $code(var(--color-day-blue-text))
+///  - The blue text color in the day color scheme.
+
+ * $code($day-purple-text)
+ * $code(var(--color-day-purple-text))
+///  - The purple text color in the day color scheme.
+
+ * $code($day-gray-text)
+ * $code(var(--color-day-gray-text))
+///  - The gray text color in the day color scheme.
+
+ * $code($day-red-background)
+ * $code(var(--color-day-red-background))
+///  - The red background color in the day color scheme.
+
+ * $code($day-orange-background)
+ * $code(var(--color-day-orange-background))
+///  - The orange background color in the day color scheme.
+
+ * $code($day-yellow-background)
+ * $code(var(--color-day-yellow-background))
+///  - The yellow background color in the day color scheme.
+
+ * $code($day-green-background)
+ * $code(var(--color-day-green-background))
+///  - The green background color in the day color scheme.
+
+ * $code($day-blue-background)
+ * $code(var(--color-day-blue-background))
+///  - The blue background color in the day color scheme.
+
+ * $code($day-purple-background)
+ * $code(var(--color-day-purple-background))
+///  - The purple background color in the day color scheme.
+
+ * $code($day-gray-background)
+ * $code(var(--color-day-gray-background))
+///  - The gray background color in the day color scheme.
+
+ * $code($day-grayer-background)
+ * $code(var(--color-day-grayer-background))
+///  - The grayer background color in the day color scheme.
+
+ * $code($night-text)
+ * $code(var(--color-night-text))
+///  - The text color in the night color scheme.
+
+ * $code($night-background)
+ * $code(var(--color-night-background))
+///  - The background color in the night color scheme.
+
+ * $code($night-red)
+ * $code(var(--color-night-red))
+///  - The base red color in the night color scheme.
+
+ * $code($night-orange)
+ * $code(var(--color-night-orange))
+///  - The base orange color in the night color scheme.
+
+ * $code($night-yellow)
+ * $code(var(--color-night-yellow))
+///  - The base yellow color in the night color scheme.
+
+ * $code($night-green)
+ * $code(var(--color-night-green))
+///  - The base green color in the night color scheme.
+
+ * $code($night-blue)
+ * $code(var(--color-night-blue))
+///  - The base blue color in the night color scheme.
+
+ * $code($night-purple)
+ * $code(var(--color-night-purple))
+///  - The base purple color in the night color scheme.
+
+ * $code($night-gray)
+ * $code(var(--color-night-gray))
+///  - The base gray color in the night color scheme.
+
+ * $code($night-red-text)
+ * $code(var(--color-night-red-text))
+///  - The red text color in the night color scheme.
+
+ * $code($night-orange-text)
+ * $code(var(--color-night-orange-text))
+///  - The orange text color in the night color scheme.
+
+ * $code($night-yellow-text)
+ * $code(var(--color-night-yellow-text))
+///  - The yellow text color in the night color scheme.
+
+ * $code($night-green-text)
+ * $code(var(--color-night-green-text))
+///  - The green text color in the night color scheme.
+
+ * $code($night-blue-text)
+ * $code(var(--color-night-blue-text))
+///  - The blue text color in the night color scheme.
+
+ * $code($night-purple-text)
+ * $code(var(--color-night-purple-text))
+///  - The purple text color in the night color scheme.
+
+ * $code($night-gray-text)
+ * $code(var(--color-night-gray-text))
+///  - The gray text color in the night color scheme.
+
+ * $code($night-red-background)
+ * $code(var(--color-night-red-background))
+///  - The red background color in the night color scheme.
+
+ * $code($night-orange-background)
+ * $code(var(--color-night-orange-background))
+///  - The orange background color in the night color scheme.
+
+ * $code($night-yellow-background)
+ * $code(var(--color-night-yellow-background))
+///  - The yellow background color in the night color scheme.
+
+ * $code($night-green-background)
+ * $code(var(--color-night-green-background))
+///  - The green background color in the night color scheme.
+
+ * $code($night-blue-background)
+ * $code(var(--color-night-blue-background))
+///  - The blue background color in the night color scheme.
+
+ * $code($night-purple-background)
+ * $code(var(--color-night-purple-background))
+///  - The purple background color in the night color scheme.
+
+ * $code($night-gray-background)
+ * $code(var(--color-night-gray-background))
+///  - The gray background color in the night color scheme.
+
+ * $code($night-grayer-background)
+ * $code(var(--color-night-grayer-background))
+///  - The grayer background color in the night color scheme.
+/// ---------------------------------------------------------------------------
+
+$text: var(--color-text)
+$background: var(--color-background)
+
+$red: var(--color-red)
+$orange: var(--color-orange)
+$yellow: var(--color-yellow)
+$green:  var(--color-green)
+$blue: var(--color-blue)
+$purple: var(--color-purple)
+$gray: var(--color-gray)
+
+$red-text: var(--color-red-text)
+$orange-text: var(--color-orange-text)
+$yellow-text: var(--color-yellow-text)
+$green-text:  var(--color-green-text)
+$blue-text: var(--color-blue-text)
+$purple-text: var(--color-purple-text)
+$gray-text: var(--color-gray-text)
+
+$red-background: var(--color-red-background)
+$orange-background: var(--color-orange-background)
+$yellow-background: var(--color-yellow-background)
+$green-background:  var(--color-green-background)
+$blue-background: var(--color-blue-background)
+$purple-background: var(--color-purple-background)
+$gray-background: var(--color-gray-background)
+$grayer-background: var(--color-grayer-background)
+
+$day-text: var(--color-day-text)
+$day-background: var(--color-day-background)
+
+$day-red: var(--color-day-red)
+$day-orange: var(--color-day-orange)
+$day-yellow: var(--color-day-yellow)
+$day-green:  var(--color-day-green)
+$day-blue: var(--color-day-blue)
+$day-purple: var(--color-day-purple)
+$day-gray: var(--color-day-gray)
+
+$day-red-text: var(--color-day-red-text)
+$day-orange-text: var(--color-day-orange-text)
+$day-yellow-text: var(--color-day-yellow-text)
+$day-green-text:  var(--color-day-green-text)
+$day-blue-text: var(--color-day-blue-text)
+$day-purple-text: var(--color-day-purple-text)
+$day-gray-text: var(--color-day-gray-text)
+
+$day-red-background: var(--color-day-red-background)
+$day-orange-background: var(--color-day-orange-background)
+$day-yellow-background: var(--color-day-yellow-background)
+$day-green-background:  var(--color-day-green-background)
+$day-blue-background: var(--color-day-blue-background)
+$day-purple-background: var(--color-day-purple-background)
+$day-gray-background: var(--color-day-gray-background)
+$day-grayer-background: var(--color-day-grayer-background)
+
+$night-text: var(--color-night-text)
+$night-background: var(--color-night-background)
+
+$night-red: var(--color-night-red)
+$night-orange: var(--color-night-orange)
+$night-yellow: var(--color-night-yellow)
+$night-green:  var(--color-night-green)
+$night-blue: var(--color-night-blue)
+$night-purple: var(--color-night-purple)
+$night-gray: var(--color-night-gray)
+
+$night-red-text: var(--color-night-red-text)
+$night-orange-text: var(--color-night-orange-text)
+$night-yellow-text: var(--color-night-yellow-text)
+$night-green-text:  var(--color-night-green-text)
+$night-blue-text: var(--color-night-blue-text)
+$night-purple-text: var(--color-night-purple-text)
+$night-gray-text: var(--color-night-gray-text)
+
+$night-red-background: var(--color-night-red-background)
+$night-orange-background: var(--color-night-orange-background)
+$night-yellow-background: var(--color-night-yellow-background)
+$night-green-background:  var(--color-night-green-background)
+$night-blue-background: var(--color-night-blue-background)
+$night-purple-background: var(--color-night-purple-background)
+$night-gray-background: var(--color-night-gray-background)
+$night-grayer-background: var(--color-night-grayer-background)
+
+:root
+  --color-text: #{$actual-day-text}
+  --color-background: #{$actual-day-background}
+
+  --color-red: #{$actual-day-red}
+  --color-orange: #{$actual-day-orange}
+  --color-yellow: #{$actual-day-yellow}
+  --color-green:  #{$actual-day-green}
+  --color-blue: #{$actual-day-blue}
+  --color-purple: #{$actual-day-purple}
+  --color-gray: #{$actual-day-gray}
+
+  --color-red-text: #{$actual-day-red-text}
+  --color-orange-text: #{$actual-day-orange-text}
+  --color-yellow-text: #{$actual-day-yellow-text}
+  --color-green-text:  #{$actual-day-green-text}
+  --color-blue-text: #{$actual-day-blue-text}
+  --color-purple-text: #{$actual-day-purple-text}
+  --color-gray-text: #{$actual-day-gray-text}
+
+  --color-red-background: #{$actual-day-red-background}
+  --color-orange-background: #{$actual-day-orange-background}
+  --color-yellow-background: #{$actual-day-yellow-background}
+  --color-green-background:  #{$actual-day-green-background}
+  --color-blue-background: #{$actual-day-blue-background}
+  --color-purple-background: #{$actual-day-purple-background}
+  --color-gray-background: #{$actual-day-gray-background}
+  --color-grayer-background: #{$actual-day-grayer-background}
+
+  --color-day-text: #{$actual-day-text}
+  --color-day-background: #{$actual-day-background}
+
+  --color-day-red: #{$actual-day-red}
+  --color-day-orange: #{$actual-day-orange}
+  --color-day-yellow: #{$actual-day-yellow}
+  --color-day-green:  #{$actual-day-green}
+  --color-day-blue: #{$actual-day-blue}
+  --color-day-purple: #{$actual-day-purple}
+  --color-day-gray: #{$actual-day-gray}
+
+  --color-day-red-text: #{$actual-day-red-text}
+  --color-day-orange-text: #{$actual-day-orange-text}
+  --color-day-yellow-text: #{$actual-day-yellow-text}
+  --color-day-green-text:  #{$actual-day-green-text}
+  --color-day-blue-text: #{$actual-day-blue-text}
+  --color-day-purple-text: #{$actual-day-purple-text}
+  --color-day-gray-text: #{$actual-day-gray-text}
+
+  --color-day-red-background: #{$actual-day-red-background}
+  --color-day-orange-background: #{$actual-day-orange-background}
+  --color-day-yellow-background: #{$actual-day-yellow-background}
+  --color-day-green-background:  #{$actual-day-green-background}
+  --color-day-blue-background: #{$actual-day-blue-background}
+  --color-day-purple-background: #{$actual-day-purple-background}
+  --color-day-gray-background: #{$actual-day-gray-background}
+  --color-day-grayer-background: #{$actual-day-grayer-background}
+
+  --color-night-text: #{$actual-night-text}
+  --color-night-background: #{$actual-night-background}
+
+  --color-night-red: #{$actual-night-red}
+  --color-night-orange: #{$actual-night-orange}
+  --color-night-yellow: #{$actual-night-yellow}
+  --color-night-green:  #{$actual-night-green}
+  --color-night-blue: #{$actual-night-blue}
+  --color-night-purple: #{$actual-night-purple}
+  --color-night-gray: #{$actual-night-gray}
+
+  --color-night-red-text: #{$actual-night-red-text}
+  --color-night-orange-text: #{$actual-night-orange-text}
+  --color-night-yellow-text: #{$actual-night-yellow-text}
+  --color-night-green-text:  #{$actual-night-green-text}
+  --color-night-blue-text: #{$actual-night-blue-text}
+  --color-night-purple-text: #{$actual-night-purple-text}
+  --color-night-gray-text: #{$actual-night-gray-text}
+
+  --color-night-red-background: #{$actual-night-red-background}
+  --color-night-orange-background: #{$actual-night-orange-background}
+  --color-night-yellow-background: #{$actual-night-yellow-background}
+  --color-night-green-background:  #{$actual-night-green-background}
+  --color-night-blue-background: #{$actual-night-blue-background}
+  --color-night-purple-background: #{$actual-night-purple-background}
+  --color-night-gray-background: #{$actual-night-gray-background}
+  --color-night-grayer-background: #{$actual-night-grayer-background}
+
+//! TODO: Color name match with Radix Primitives
+// FIXME docs
+/// ---------------------------------------------------------------------------
+/// == Color names
+
+///  This module provides a set of mixins for defining text, background, and
+///  border colors. Each of these mixins takes a single argument, the name of
+///  the color without specifying day or night. The mixin will output the
+///  appropriate CSS, along with CSS to switch colors when the user prefers
+///  dark mode.
+/// ---------------------------------------------------------------------------
+
+$day-colors: ('text': $actual-day-text, 'background': $actual-day-background, 'red': $actual-day-red, 'orange': $actual-day-orange, 'yellow': $actual-day-yellow, 'green': $actual-day-green, 'blue': $actual-day-blue, 'purple': $actual-day-purple, 'gray': $actual-day-gray, 'red-text': $actual-day-red-text, 'orange-text': $actual-day-orange-text, 'yellow-text': $actual-day-yellow-text, 'green-text': $actual-day-green-text, 'blue-text': $actual-day-blue-text, 'purple-text': $actual-day-purple-text, 'gray-text': $actual-day-gray-text, 'red-background': $actual-day-red-background, 'orange-background': $actual-day-orange-background, 'yellow-background': $actual-day-yellow-background, 'green-background': $actual-day-green-background, 'blue-background': $actual-day-blue-background, 'purple-background': $actual-day-purple-background, 'gray-background': $actual-day-gray-background, 'grayer-background': $actual-day-grayer-background)
+
+$night-colors: ('text': $actual-night-text, 'background': $actual-night-background, 'red': $actual-night-red, 'orange': $actual-night-orange, 'yellow': $actual-night-yellow, 'green': $actual-night-green, 'blue': $actual-night-blue, 'purple': $actual-night-purple, 'gray': $actual-night-gray, 'red-text': $actual-night-red-text, 'orange-text': $actual-night-orange-text, 'yellow-text': $actual-night-yellow-text, 'green-text': $actual-night-green-text, 'blue-text': $actual-night-blue-text, 'purple-text': $actual-night-purple-text, 'gray-text': $actual-night-gray-text, 'red-background': $actual-night-red-background, 'orange-background': $actual-night-orange-background, 'yellow-background': $actual-night-yellow-background, 'green-background': $actual-night-green-background, 'blue-background': $actual-night-blue-background, 'purple-background': $actual-night-purple-background, 'gray-background': $actual-night-gray-background, 'grayer-background': $actual-night-grayer-background)
+
+$default-colors: if($theme-color-scheme == 'night', $night-colors, $day-colors)
+
+@mixin border($name)
+  border-color: map.get($default-colors, #{$name})
+  @if $theme-color-scheme == 'auto'
+ @media (prefers-color-scheme: dark)
+ border-color: map.get($night-colors, #{$name})
+
+@mixin background($name)
+  background-color: map.get($default-colors, #{$name})
+  @if $theme-color-scheme == 'auto'
+@media (prefers-color-scheme: dark)
+background-color: map.get($night-colors, #{$name})
+
+@mixin text($name)
+  color: map.get($default-colors, #{$name})
+  @if $theme-color-scheme == 'auto'
+@media (prefers-color-scheme: dark)
+ color: map.get($night-colors, #{$name})

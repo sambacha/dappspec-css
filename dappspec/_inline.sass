@@ -1,0 +1,206 @@
+/* SPDX-License-Identifier: MIT */
+
+@use 'sass:map'
+@use 'sass:meta'
+
+@use 'colors'
+@use 'common'
+@use 'theme'
+
+
+/// ---------------------------------------------------------------------------
+/// ---
+
+@if common.unthemed('inline-app')
+  span.app
+    font-style: italic
+
+
+/// ---------------------------------------------------------------------------
+/// ---
+
+@if common.unthemed('inline-key')
+  kbd
+    font-family: inherit
+    font-size: inherit
+    @include colors.text(gray-text)
+    @include colors.background(gray-background)
+    @include colors.border(gray)
+    border: solid 1px
+    border-radius: 2px
+    // FIXME em
+    margin: 0 0.2em 0 0.2em
+    padding: 0.2em 0.5em 0 0.5em
+    white-space: nowrap
+  kbd.key-Fn
+    font-weight: bold
+    @include colors.text(blue-text)
+  span.key a
+    //! FIXME underline links - TODO
+    border-bottom: none
+  a kbd
+    @include colors.text(blue-text)
+    @include colors.border(blue-text)
+  span.keyseq
+    @include colors.text(gray-text)
+    white-space: nowrap
+  a span.keyseq
+    @include colors.text(blue-text)
+
+/// ---------------------------------------------------------------------------
+/// ---
+
+@if common.unthemed('inline-hi')
+  span.hi
+    @include common.inline-padding
+    @include colors.background(yellow-background)
+    &.red
+      @include colors.background(red-background)
+    &.orange
+      @include colors.background(orange-background)
+    &.yellow
+      @include colors.background(yellow-background)
+    &.green
+      @include colors.background(green-background)
+    &.blue
+      @include colors.background(blue-background)
+    &.purple
+      @include colors.background(purple-background)
+    &.gray
+      @include colors.background(gray-background)
+
+  span.hi.hi-ins
+    @include colors.background(green-background)
+  span.hi.hi-del
+    @include colors.background(red-background)
+    text-decoration: line-through
+  span.hi.hi-ins ins
+    text-decoration: none
+  span.hi.hi-del del
+    text-decoration: none
+
+
+/// ---------------------------------------------------------------------------
+/// == Code
+       [#code]
+
+    [synopsis]
+      [code]
+        <code>
+
+//  Use the $code(code) element for any computer code. There's no need to use
+//    an additional class. For code blocks, use a $code(code) element inside a
+//    $code(pre) element.
+/// ---
+
+code
+  @include common.mono
+  @if common.unthemed('inline-code')
+    @include common.inline-padding
+    border-bottom: solid 1px
+    @include colors.border(grayer-background)
+    user-select: all
+    code
+      border: none
+
+@if common.unthemed('inline-code')
+  pre code
+    border: unset
+  a code
+    color: inherit
+
+
+/// ---------------------------------------------------------------------------
+/// == Commands
+       [#cmd]
+
+    [synopsis]
+      [code]
+        <code class="cmd">
+
+//   Use the $code(.cmd) class on the $code(code) element for a command you
+//    would type into a shell or other command prompt. Dappspec treats commands as
+//    a type of code, but provides distinct styling for them.
+/// ---
+
+@if common.unthemed('inline-cmd')
+  code.cmd
+    @include colors.background(gray-background)
+
+  pre
+    code.cmd
+      background-color: unset
+
+
+/// ---------------------------------------------------------------------------
+/// == Filenames
+
+    [synopsis]
+      [code]
+        <span class="file">
+
+//   Use the $code(.file) class on the $code(span) element for filenames. Dappspec
+//   formats filenames in monospace, but does not treat them as code.
+/// ---
+
+span.file
+  @include common.mono
+
+
+/// ---------------------------------------------------------------------------
+/// == Input, output, and errors
+       [#io]
+
+    [synopsis]
+      [code]
+        <span class="input">
+        <span class="output">
+        <span class="error">
+        <span class="prompt">
+
+//!  FIXME docs they all use span, cmd is better than input in some cases
+/// ---
+
+span.error, span.input, span.output, span.prompt
+  @include common.mono
+@if common.unthemed('inline-io')
+  pre
+    span.error
+      @include colors.text(red-text)
+    span.input
+      font-weight: bold
+      @include colors.text(gray-text)
+    span.output
+      @include colors.text(text)
+    span.prompt
+      @include colors.text(gray-text)
+
+
+/// ---------------------------------------------------------------------------
+/// == System items
+
+    [synopsis]
+      [code]
+        <span class="sys">
+
+//!  FIXME
+/// ---
+
+span.sys
+  @include common.mono
+
+
+/// ---------------------------------------------------------------------------
+/// == Variable text
+       [#var]
+
+    [synopsis]
+      [code]
+        <span class="var">
+
+//!  FIXME
+/// ---
+
+@if common.unthemed('inline-var')
+  span.var
+    font-style: italic
