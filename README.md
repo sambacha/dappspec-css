@@ -59,25 +59,30 @@ This uses CSS grids with seven distinct areas that look like this:
 ```
 
 It does not matter what order you place the elements in, and you do not
-have to use all the possible child elements. Layouts will place their
-children in the appropriate places based on element names and classes.
+have to use all the possible child elements. 
 
-Use a $code(header) child or any element with the $code(.top) class to
+**Layouts will place their children in the appropriate places based on element names and classes.**
+
+##### header & footer
+Use a `$code(header)` child or any element with the $code(.top) class to
 place a header at the top of the page, outside any sidebars. Use a
-$code(footer) child or any element with the $code(.bottom) class to
+`$code(footer)` child or any element with the $code(.bottom) class to
 place a footer at the bottom of the page, outside any sidebars. These
 two classes are mostly used for headers and footers that are present
 throughout an entire site.
 
-They will fill available horizontal space, but they do not expand vertically past their content size.
+> They will fill available horizontal space, but they do not expand vertically past their content size.
 
-Use an $code(aside) element or any element with the $code(.left) class
-to create a left sidebar. Use any element with the $code(.right) class
+#### aside, left & right
+
+Use an `$code(aside`) element or any element with the `$code(.left)` class
+to create a left sidebar. Use any element with the `$code(.right)` class
 (preferably an $code(aside) element) to create a right sidebar. These
 will fill available vertical space, but they do not expand horizontally.
 In fact, they will use as little space as possible, potentially wrapping
-text to a single word. This is probably not what you want. They work this
-way by default to give you more flexibility.
+text to a single word. 
+
+> This is probably not what you want. They work this way by default to give you more flexibility.
 
 ## Definitions
 
