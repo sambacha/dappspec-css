@@ -91,6 +91,8 @@ text to a single word.
 
 ### Synopsis
 
+> Synopsis are a subset of Admonitions, or *call outs*
+
 Dappspec provides CSS definitions for a synopsis, which is often used at the
 top of a topic to provide a quick overview. A synopsis often contains a
 short paragraph, a bullet list, or a code block.
@@ -98,6 +100,28 @@ short paragraph, a bullet list, or a code block.
 To use a synopsis, use the `$code(synopsis)` class on any` $code(div)`
 element. A synopsis div should contain other block-level content.
 
+```scss
+  [synopsis]
+    [code]
+      <div class="note">
+      <div class="note-advanced">
+      <div class="note-bug">
+      <div class="note-caution">
+      <div class="note-danger">
+      <div class="note-important">
+      <div class="note-package">
+      <div class="note-plain">
+      <div class="note-sidebar">
+      <div class="note-tip">
+      <div class="note-warning">
+      <div class="note-security">
+      <div class="note-interface">
+      <div class="note-gas">
+      <div class="note-emit">
+      <div class="note-failure">
+```
+    
+    
 ## CSS color variables
 
 Dappspec provides a set of CSS color variables for all colors it defines, as
