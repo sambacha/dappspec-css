@@ -1,6 +1,6 @@
 # [Dappspec](#)
 
-- [[Dappspec](#)](#-dappspec----)
+- [Dappspec](#dappspec)
   - [Motivation](#motivation)
   - [Specification](#specification)
   - [Definitions](#definitions)
@@ -22,9 +22,8 @@
 
 **Dappspec** is a CSS design language for documentation built from Natspec.[^1]
 
-It distills and simplifies both design elements and CSS for usage in contract documentation
+It distills and simplifies both design elements and CSS for usage in contract documentation.[^2]
 
-> This is meant to facilitate a comprehensive documentation system for Smart Contracts.
 
 ## Motivation
 
@@ -195,3 +194,4 @@ You can build the CSS and copy it into your project.
 ## Notes
 
 [^1]: Semantic formats like Markdown, DITA, AsciiDoc, reStructuredText, etc, are forward compatible with Dappspec.
+[^2]: This is meant to facilitate a comprehensive documentation system for EVM Smart Contracts.
