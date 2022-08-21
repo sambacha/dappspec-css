@@ -40,7 +40,7 @@ Dappspec provides the `$code(.layout)` class to manage page layouts.
 
 This uses CSS grids with seven distinct areas that look like this:
 
-<code>
+```
     |--------------------------------------|
     |          header or .top              |
     |--------------------------------------|
@@ -56,7 +56,7 @@ This uses CSS grids with seven distinct areas that look like this:
     |--------------------------------------|
     |          footer or .bottom           |
     |--------------------------------------|
-</code>
+```
 
 It does not matter what order you place the elements in, and you do not
 have to use all the possible child elements. Layouts will place their
