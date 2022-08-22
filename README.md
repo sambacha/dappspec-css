@@ -40,7 +40,7 @@ Dappspec provides the `$code(.layout)` class to manage page layouts.
 
 This uses CSS grids with seven distinct areas that look like this:
 
-<code>
+```
     |--------------------------------------|
     |          header or .top              |
     |--------------------------------------|
@@ -56,28 +56,33 @@ This uses CSS grids with seven distinct areas that look like this:
     |--------------------------------------|
     |          footer or .bottom           |
     |--------------------------------------|
-</code>
+```
 
 It does not matter what order you place the elements in, and you do not
-have to use all the possible child elements. Layouts will place their
-children in the appropriate places based on element names and classes.
+have to use all the possible child elements. 
 
-Use a $code(header) child or any element with the $code(.top) class to
+**Layouts will place their children in the appropriate places based on element names and classes.**
+
+##### header & footer
+Use a `$code(header)` child or any element with the $code(.top) class to
 place a header at the top of the page, outside any sidebars. Use a
-$code(footer) child or any element with the $code(.bottom) class to
+`$code(footer)` child or any element with the $code(.bottom) class to
 place a footer at the bottom of the page, outside any sidebars. These
 two classes are mostly used for headers and footers that are present
 throughout an entire site.
 
-They will fill available horizontal space, but they do not expand vertically past their content size.
+> They will fill available horizontal space, but they do not expand vertically past their content size.
 
-Use an $code(aside) element or any element with the $code(.left) class
-to create a left sidebar. Use any element with the $code(.right) class
+#### aside, left & right
+
+Use an `$code(aside`) element or any element with the `$code(.left)` class
+to create a left sidebar. Use any element with the `$code(.right)` class
 (preferably an $code(aside) element) to create a right sidebar. These
 will fill available vertical space, but they do not expand horizontally.
 In fact, they will use as little space as possible, potentially wrapping
-text to a single word. This is probably not what you want. They work this
-way by default to give you more flexibility.
+text to a single word. 
+
+> This is probably not what you want. They work this way by default to give you more flexibility.
 
 ## Definitions
 
@@ -86,6 +91,8 @@ way by default to give you more flexibility.
 
 ### Synopsis
 
+> Synopsis are a subset of Admonitions, or *call outs*
+
 Dappspec provides CSS definitions for a synopsis, which is often used at the
 top of a topic to provide a quick overview. A synopsis often contains a
 short paragraph, a bullet list, or a code block.
@@ -93,6 +100,28 @@ short paragraph, a bullet list, or a code block.
 To use a synopsis, use the `$code(synopsis)` class on any` $code(div)`
 element. A synopsis div should contain other block-level content.
 
+```scss
+  [synopsis]
+    [code]
+      <div class="note">
+      <div class="note-advanced">
+      <div class="note-bug">
+      <div class="note-caution">
+      <div class="note-danger">
+      <div class="note-important">
+      <div class="note-package">
+      <div class="note-plain">
+      <div class="note-sidebar">
+      <div class="note-tip">
+      <div class="note-warning">
+      <div class="note-security">
+      <div class="note-interface">
+      <div class="note-gas">
+      <div class="note-emit">
+      <div class="note-failure">
+```
+    
+    
 ## CSS color variables
 
 Dappspec provides a set of CSS color variables for all colors it defines, as
@@ -190,6 +219,64 @@ of files, we embed the icons as data URIs into the CSS.
 You can build the CSS and copy it into your project.
 
 > Dappspec is not ready for production use.
+
+## Vendor CSS Mixin
+
+```
+/vendor/sourcecode-mixin.css
+```
+
+#### how to make a paragraph
+
+  <para>
+    your text goes here! It isn't whitespace sensitive.
+  </para>
+
+  <para>
+    Feel free to break up your sentences in to
+
+    as many lines
+    as
+    you
+    like.
+  </para>
+how about a bit of code
+  <literal>printf()</literal>
+and it works in titles and paras and what-not
+
+  <title>Printing With <literal>printf()</literal></title>
+
+  <para>
+    to print some stuff to the screen, use <literal>printf()</literal>.
+  </para>
+  
+#### how to show console output
+
+```console
+  <screen>
+    $ git clone https://github.com/$USR/$REPO.git
+  </screen>
+```
+  
+```diff
+  <screen>
+!    <prompt>$ <prompt>git clone https://github.com/$USR/$REPO.git
+  </screen>
+```
+
+```console
+shell:~ $ git clone https://github.com/$USR/$REPO.git
+```
+
+then you can add some display code to prevent the $ from being copied:
+
+```css
+  .prompt {
+    user-select: none;
+    -moz-user-select: none;
+}
+```
+
 
 ## Notes
 
