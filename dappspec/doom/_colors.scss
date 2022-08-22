@@ -1,0 +1,210 @@
+@import 'css-vars';
+
+$css-vars-use-native: true;
+
+@include css-vars(
+  (
+    --inverted-background-rgb: '96, 125, 139',
+    --inverted-background: #607d8b,
+    --inverted-secondary-text: #cfd8dc,
+    --inverted-text: #eceff1,
+    --primary-active-rgb: '75, 98, 109',
+    --primary-active: #4b626d,
+    --primary-background: #eceff1,
+    --primary-highlight: #5c6bc0,
+    --primary-text: #263238,
+    --secondary-active: #4150a8,
+    --secondary-background: #ffffff,
+    --secondary-background-rgb: '255, 255, 255',
+    --secondary-hover: #a6aedc,
+    --secondary-text-rgb: '96, 125, 139',
+    --secondary-text: #607d8b
+  )
+);
+
+// Colors
+$error: #ef5350;
+$highlight-content: #ffffff;
+$primary-shadow: #000000;
+$success: #4db6ac;
+$warning: #ffa726;
+
+// Derivatives
+$primary-active: rgba(var(--primary-active-rgb), 0.75);
+$primary-hover: rgba(var(--inverted-background-rgb), 0.75);
+$primary-mask: rgba($primary-shadow, 0.5);
+$primary-outline: rgba($primary-shadow, 0.12);
+$secondary-outline: rgba(var(--secondary-text-rgb), 0.26);
+
+// Page
+$page-background: var(--primary-background);
+
+// Scroll Bar
+$scrollbar-background: transparent;
+$scrollbar-content: var(--primary-text);
+
+// Card
+$card-background: var(--secondary-background);
+$card-content: var(--primary-text);
+
+// Notification
+$notification-button-background-active: var(--secondary-active);
+$notification-button-background-hover: var(--secondary-hover);
+$notification-button-background: var(--primary-highlight);
+$notification-button-border: var(--secondary-text);
+$notification-button-content: $highlight-content;
+$notification-content: var(--primary-text);
+$notification-hint: var(--secondary-text);
+
+// App Bar
+$app-bar-background-wide: var(--primary-background);
+$app-bar-background: var(--secondary-background);
+$app-bar-border: $primary-outline;
+$app-bar-button-content-hover: var(--inverted-text);
+$app-bar-button-hover: $primary-hover;
+$app-bar-content: var(--primary-text);
+
+// Side Menu
+$side-bar-background: var(--secondary-background);
+$side-bar-border: $secondary-outline;
+$side-bar-button-hover: $primary-hover;
+$side-bar-content-hover: var(--inverted-text);
+$side-bar-content: var(--primary-text);
+$side-bar-label: var(--primary-text);
+
+// Construction
+$construction-content: var(--primary-text);
+$construction-hint: var(--secondary-text);
+
+// Modal
+$modal-mask-background: $primary-mask;
+
+// Dashboard
+$dashboard-hint: var(--secondary-text);
+$dashboard-primary-content: var(--primary-text);
+$dashboard-secondary-content: var(--primary-text);
+
+// Form
+$form-border: var(--secondary-text);
+$form-label: var(--secondary-text);
+
+// Fields
+$field-border: var(--primary-highlight);
+$field-content: var(--primary-text);
+$field-hint: var(--secondary-text);
+$field-input-hover: var(--secondary-hover);
+$field-input-mark: $highlight-content;
+$field-input-selected: var(--primary-highlight);
+$field-input-unselected: $highlight-content;
+$field-label: var(--primary-highlight);
+$field-toggle-background: var(--inverted-background);
+$field-toggle-highlight: var(--primary-highlight);
+$field-toggle-hover: var(--secondary-hover);
+$field-toggle-switch: $highlight-content;
+
+// Jumbotron
+$jumbotron-content: var(--primary-text);
+
+// Section
+$section-content: var(--primary-text);
+$section-hint: var(--secondary-text);
+
+// Sub-Section
+$sub-section-content: var(--primary-text);
+$sub-section-hint: var(--secondary-text);
+
+// Item Row
+$item-row-content: var(--primary-text);
+$item-row-hint: var(--secondary-text);
+
+// List
+$list-footer-content: var(--primary-text);
+$list-jump-background-active: var(--secondary-active);
+$list-jump-background-hover: var(--secondary-hover);
+$list-jump-background: var(--primary-highlight);
+$list-jump-content: $highlight-content;
+
+// Table
+$table-background: var(--secondary-background);
+$table-background-rgb: var(--secondary-background-rgb);
+$table-shadow: $primary-shadow;
+
+// Table Header
+$table-header-border: $primary-outline;
+$table-header-content-hover: var(--secondary-hover);
+$table-header-content: var(--primary-highlight);
+
+// Table Tooltip
+$table-tooltip-background: var(--inverted-background);
+$table-tooltip-content: var(--inverted-text);
+
+// Table Row
+$table-row-background-hover: $primary-hover;
+$table-row-border: $primary-outline;
+$table-row-content-hover: var(--inverted-text);
+$table-row-content: var(--primary-text);
+
+// Table Paginator
+$table-paginator-background-hover: $primary-hover;
+$table-paginator-border: var(--primary-highlight);
+$table-paginator-content-hover: var(--inverted-text);
+$table-paginator-content: var(--primary-text);
+
+// Loader
+$loader-stroke: var(--primary-highlight);
+
+// Placeholder
+$placeholder-button-background-active: var(--secondary-active);
+$placeholder-button-background-hover: var(--secondary-hover);
+$placeholder-button-background: var(--primary-highlight);
+$placeholder-button-content: $highlight-content;
+$placeholder-content: var(--primary-text);
+
+// Missing
+$missing-button-background-active: var(--secondary-active);
+$missing-button-background-hover: var(--secondary-hover);
+$missing-button-background: var(--primary-highlight);
+$missing-button-content: $highlight-content;
+
+// Portfolio Page
+$portfolio-modal-content: var(--primary-text);
+$portfolio-section-label: var(--primary-text);
+
+// Portfolio Transaction Form
+$form-active-light: $primary-active;
+$form-active: var(--secondary-active);
+$form-button-label: $highlight-content;
+$form-content-hover-light: var(--inverted-text);
+$form-content: var(--primary-text);
+$form-hover-light: $primary-hover;
+$form-hover: var(--secondary-hover);
+$form-selected: var(--primary-highlight);
+$form-unselected: var(--primary-highlight);
+
+// Portfolio Transaction List
+$transaction-list-background-hover: $primary-hover;
+$transaction-list-background: var(--secondary-background);
+$transaction-list-content-hover: var(--inverted-text);
+$transaction-list-content: var(--primary-text);
+$transaction-list-failed: var(--primary-text);
+$transaction-list-hint-hover: var(--inverted-secondary-text);
+$transaction-list-hint: var(--secondary-text);
+$transaction-list-negative: $error;
+$transaction-list-pending: var(--primary-text);
+$transaction-list-positive: $success;
+
+// Transaction Page
+$transaction-content: var(--primary-text);
+$transaction-status-background-failed: $error;
+$transaction-status-background-pending: $warning;
+$transaction-status-background-success: $success;
+$transaction-status-content: $highlight-content;
+
+// Privacy Page
+$privacy-terms-content: var(--primary-text);
+$privacy-terms-hint: var(--secondary-text);
+$privacy-terms-link-background-active: var(--secondary-active);
+$privacy-terms-link-background-hover: var(--primary-highlight);
+$privacy-terms-link-background: var(--inverted-background);
+$privacy-terms-link-text-hover: $highlight-content;
+$privacy-terms-link-text: var(--inverted-text);

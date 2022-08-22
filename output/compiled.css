@@ -1,0 +1,18 @@
+/* Error: Nothing may be indented beneath a variable declaration.
+ *    ,
+ * 38 |  $theme-color-scheme: 'day'
+ *    |  ^
+ *    '
+ *   dappspec/_colors.sass 38:2  @use
+ *   dappspec/dappspec.sass 6:1  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Nothing may be indented beneath a variable declaration.\a    \2577 \a 38 \2502   $theme-color-scheme: 'day'\a    \2502   ^\a    \2575 \a   dappspec/_colors.sass 38:2  @use\a   dappspec/dappspec.sass 6:1  root stylesheet";
+}
