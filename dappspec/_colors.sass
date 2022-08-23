@@ -1,17 +1,30 @@
 /* SPDX-License-Identifier: MIT */
 
 /* @fileName Colors  */
-/* @version 0.0.1    */
+/* @version 0.0.2    */
 /* @package Dappspec */
 
 /// ---------------------------------------------------------------------------
 /// = Colors
 
+/// 
 ///  Dappspec provides dozens of colors definitions for text, backgrounds, and
 ///  borders. It provides these for both a day mode and a night mode. (We
 ///  use the terms "day" and "night" instead of "light" and "dark" to avoid
-///  confusion with color names. Does $code(dark-blue) mean a blue that is
-///  dark or a blue for the dark mode?)
+///  confusion with color names. 
+///  Does $code(dark-blue) mean a blue that is dark or a blue for the dark mode?)
+///  
+///  The semantics of these colors follow the Radix Framework 
+///  @see {@link https://github.com/radix-ui/colors}
+///  @see {@link https://www.radix-ui.com/docs/colors/palette-composition/composing-a-palette}
+/// 
+///   Semantic Scales
+///   Error: Red/Tomato/Crimson
+///   Success: Teal/Green/Grass/Mint
+///   Warning: Yellow/Amber
+///   Info: Blue/Sky/Cyan
+///   {@link https://www.radix-ui.com/docs/colors/palette-composition/composing-a-palette#choosing-semantic-scales}
+/// 
 /// ---------------------------------------------------------------------------
 
 @use 'sass:color'
@@ -35,8 +48,8 @@
 /// ---------------------------------------------------------------------------
 
 $theme-color-scheme: 'auto'
- $theme-color-scheme: 'day'
- $theme-color-scheme: 'night'
+$theme-color-scheme: 'day'
+$theme-color-scheme: 'night'
 
 
 /// ---------------------------------------------------------------------------
