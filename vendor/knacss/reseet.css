@@ -1,0 +1,171 @@
+/** reset */
+/* 
+ * Hidden but not for an assistive technology like a screen reader, Yahoo! method 
+ */
+/* line 5, sass/base/_reset-accessibility.scss */
+.visually-hidden,
+.sr-only {
+  position: absolute !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+}
+
+/*
+ * Disable animations styles when reduced motion is enabled
+ */
+@media (prefers-reduced-motion: reduce) {
+  /* line 21, sass/base/_reset-accessibility.scss */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/*
+ * Change the cursor on busy elements in all browsers.
+ */
+/* line 31, sass/base/_reset-accessibility.scss */
+[aria-busy="true"] {
+  cursor: progress;
+}
+
+/*
+ * Change the cursor on control elements in all browsers.
+ */
+/* line 39, sass/base/_reset-accessibility.scss */
+[aria-controls] {
+  cursor: pointer;
+}
+
+/*
+ * Change the cursor on disabled, not-editable, or otherwise
+ * inoperable elements in all browsers.
+ */
+/* line 48, sass/base/_reset-accessibility.scss */
+[aria-disabled="true"],
+[disabled] {
+  cursor: not-allowed;
+}
+
+/*
+ * Change the display on visually hidden accessible elements
+ * in all browsers.
+ */
+/* line 58, sass/base/_reset-accessibility.scss */
+[aria-hidden="false"][hidden] {
+  display: initial;
+}
+
+/* line 62, sass/base/_reset-accessibility.scss */
+[aria-hidden="false"][hidden]:not(:focus) {
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
+/* ----------------------------- */
+/* ==Print (quick print reset)   */
+/* ----------------------------- */
+@media print {
+  /* line 6, sass/base/_reset-print.scss */
+  * {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* line 12, sass/base/_reset-print.scss */
+  body {
+    width: auto;
+    margin: auto;
+    font-family: serif;
+    font-size: 12pt;
+  }
+
+  /* line 19, sass/base/_reset-print.scss */
+  p,
+  .p-like,
+  h1,
+  .h1-like,
+  h2,
+  .h2-like,
+  h3,
+  .h3-like,
+  h4,
+  .h4-like,
+  h5,
+  .h5-like,
+  h6,
+  .h6-like,
+  blockquote,
+  label,
+  ul,
+  ol {
+    color: #000;
+    margin: auto;
+  }
+
+  /* line 41, sass/base/_reset-print.scss */
+  .print {
+    display: block;
+  }
+
+  /* line 45, sass/base/_reset-print.scss */
+  .no-print {
+    display: none;
+  }
+
+  /* no orphans, no widows */
+  /* line 50, sass/base/_reset-print.scss */
+  p,
+  .p-like,
+  blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* no breaks inside these elements */
+  /* line 58, sass/base/_reset-print.scss */
+  blockquote,
+  ul,
+  ol {
+    page-break-inside: avoid;
+  }
+
+  /* page break before main headers
+  h1,
+  .h1-like {
+    page-break-before: always;
+  }
+  */
+  /* no breaks after these elements */
+  /* line 72, sass/base/_reset-print.scss */
+  h1,
+  .h1-like,
+  h2,
+  .h2-like,
+  h3,
+  .h3-like,
+  caption {
+    page-break-after: avoid;
+  }
+
+  /* line 82, sass/base/_reset-print.scss */
+  a {
+    color: #000;
+  }
+
+/* displaying URLs */
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+  /* line 92, sass/base/_reset-print.scss */
+  a[href^="javascript:"]::after,
+  a[href^="#"]::after {
+    content: "";
+  }
+}
+
+/*# sourceMappingURL=reseet.css.map */
