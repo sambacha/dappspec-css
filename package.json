@@ -5,7 +5,12 @@
     "test": "test",
     "dappspec": "dappspec"
   },
-  "scripts": {},
+  "scripts": {
+    "test:stylelint": "stylelint dist/dappspec.css",
+    "test:chrome": "testcafe chrome:headless test/acceptance/chrome --app \"http-server . --silent\"",
+    "test:firefox": "testcafe firefox:headless test/acceptance/firefox --app \"http-server . --silent\"",
+    "test:safari": "testcafe safari test/acceptance/safari --app \"http-server . --silent\""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sambacha/dappspec-css.git"
@@ -26,10 +31,21 @@
     "@jest/types": "^28.1.3",
     "browserslist": "^4.21.3",
     "cssnano": "^5.1.13",
+    "http-server": "^14.1.1",
     "postcss": "^8.4.16",
     "postcss-preset-env": "^7.8.0",
     "postcss-scss": "^4.0.4",
     "prettier": "^2.7.1",
-    "stylelint": "^14.10.0"
+    "stylelint": "^14.10.0",
+    "stylelint-config-xo": "^0.21.0",
+    "testcafe": "^2.0.0"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-xo",
+    "rules": {
+      "no-duplicate-selectors": null,
+      "no-descending-specificity": null,
+      "property-no-vendor-prefix": null
+    }
   }
 }
