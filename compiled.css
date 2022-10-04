@@ -1,8 +1,9 @@
-/* Error: Can't find stylesheet to import.
+/* Error: expected "{".
  *    ,
- * 13 | @use 'colors'
- *    | ^^^^^^^^^^^^^
+ * 26 |   --colors.background: var(--blue1);
+ *    |                                    ^
  *    '
+ *   dappspec/colors.scss 26:36   @use
  *   dappspec/_core.sass 13:1     @use
  *   dappspec/dappspec.sass 10:1  root stylesheet */
 
@@ -14,5 +15,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a    \2577 \a 13 \2502  @use 'colors'\a    \2502  ^^^^^^^^^^^^^\a    \2575 \a   dappspec/_core.sass 13:1     @use\a   dappspec/dappspec.sass 10:1  root stylesheet";
+  content: 'Error: expected "{".\a    \2577 \a 26 \2502    --colors.background: var(--blue1);\a    \2502                                     ^\a    \2575 \a   dappspec/colors.scss 26:36   @use\a   dappspec/_core.sass 13:1     @use\a   dappspec/dappspec.sass 10:1  root stylesheet';
 }

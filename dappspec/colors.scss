@@ -1,0 +1,27 @@
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/blue.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/grayDark.css";
+@import "@radix-ui/colors/blueDark.css";
+@import "@radix-ui/colors/greenDark.css";
+@import "@radix-ui/colors/redDark.css";
+
+:root {
+  --accent1: var(--blue1);
+  --accent2: var(--blue2);
+  --info1: var(--blue1);
+  --info2: var(--blue2);
+
+  --success1: var(--green1);
+  --success2: var(--green2);
+  --valid1: var(--green1);
+  --valid2: var(--green2);
+
+  --warning1: var(--yellow1);
+  --warning2: var(--yellow2);
+  --pending1: var(--yellow1);
+  --pending2: var(--yellow2);
+
+  --colors.background: var(--blue1);
+}
