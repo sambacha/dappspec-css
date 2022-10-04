@@ -1,4 +1,6 @@
 @import 'css-vars';
+// https://raw.githubusercontent.com/malyw/css-vars/master/css-vars.scss
+// @import "[%PATH%]/css-vars/css-vars";
 
 $css-vars-use-native: true;
 
@@ -22,7 +24,6 @@ $css-vars-use-native: true;
   )
 );
 
-// Colors
 $error: #ef5350;
 $highlight-content: #ffffff;
 $primary-shadow: #000000;
